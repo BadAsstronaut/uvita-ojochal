@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.language }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% include "../components/metadata.njk" %}
+        <link rel="stylesheet" href="{{'/assets/styles/globals.css' | url }}" />
+    </head>
+    <body>
+        <main role="main">
+            {{ content | safe }}
+        </main>
+    </body>
+</html>

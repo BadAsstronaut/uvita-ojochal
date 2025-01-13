@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Follow our journey as a family moving to Costa Rica. Discover logistics, wildlife, waterfalls, beaches, and more.">
+    <meta name="keywords" content="Costa Rica, moving abroad, wildlife, waterfalls, beaches, coffee farms, chocolate farms">
+    <meta name="author" content="[Your Family's Blog Name]">
+    <title>Our Costa Rica Adventure</title>
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <script src="/assets/scripts/main.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Our Costa Rica Adventure</a>
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/wildlife">Wildlife</a></li>
+                <li><a href="/waterfalls">Waterfalls & Beaches</a></li>
+                <li><a href="/coffee-chocolate">Coffee & Chocolate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="hero" style="background-image: url('/assets/images/blog_bg.png');">
+            <h1>Welcome to Our Costa Rica Adventure</h1>
+            <p>Join us as we share our journey of moving to Costa Rica!</p>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are a family from Colorado in the United States. We can’t get enough of the mountains, being outdoors, and taking our pup Spyro with us everywhere we go...</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Our Costa Rica Adventure. All rights reserved.</p>
+    </footer>
+
+    <div class="progress-bar"></div>
+
+    <style>
+        :root {
+            --primary-color: #00796b;
+            --secondary-color: #004d40;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --header-height: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .hero {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+        }
+
+        .content {
+            padding: 80px 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: var(--primary-color);
+            width: 0%;
+            z-index: 1001;
+            transition: width 0.25s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const progressBar = document.querySelector('.progress-bar');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+            });
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Misc
+*.log
+npm-debug.*
+*.scssc
+*.swp
+.DS_Store
+.sass-cache
+.env
+.cache
+
+# Node modules
+node_modules
+src/_includes/css
+
+# Editors
+.vscode
