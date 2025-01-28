@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} | {% endif %}Uvita-Ojochal Costa Rica - Paradise Found</title>
+    
+    {# SEO Meta Tags #}
+    <meta name="description" content="{% if description %}{{ description }}{% else %}Discover the natural beauty and lifestyle of Uvita and Ojochal, Costa Rica. Your guide to beaches, wildlife, real estate, and sustainable living in Costa Rica's southern Pacific coast.{% endif %}">
+    <meta name="keywords" content="Uvita, Ojochal, Costa Rica, Pacific coast, beaches, wildlife, real estate, sustainable living, expat life, Ballena National Marine Park, Costa Ballena{% if keywords %}, {{ keywords }}{% endif %}">
+    
+    {# Open Graph / Social Media Meta Tags #}
+    <meta property="og:title" content="{% if title %}{{ title }}{% else %}Uvita-Ojochal Costa Rica - Paradise Found{% endif %}">
+    <meta property="og:description" content="{% if description %}{{ description }}{% else %}Discover the natural beauty and lifestyle of Uvita and Ojochal, Costa Rica. Your guide to beaches, wildlife, real estate, and sustainable living in Costa Rica's southern Pacific coast.{% endif %}">
+    
+    {# Styles #}
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    {# Google Fonts - Using system fonts for better performance #}
+    <style>
+        @font-face {
+            font-family: 'Nature Spirit';
+            src: url('/assets/fonts/nature-spirit.woff2') format('woff2');
+            font-display: swap;
+        }
+    </style>
+</head>
+<body class="fade-in">
+    <header class="site-header">
+        <nav class="main-nav" role="navigation">
+            <div class="nav-brand">
+                <a href="/" class="logo">Uvita-Ojochal</a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/locations">Locations</a></li>
+                <li><a href="/lifestyle">Lifestyle</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Your guide to life in Costa Rica's southern Pacific paradise.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {% currentYear %} Uvita-Ojochal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

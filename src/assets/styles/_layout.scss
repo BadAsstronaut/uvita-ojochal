@@ -1,0 +1,45 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+body {
+    margin: 0;
+    font-family: $font-body;
+    line-height: 1.6;
+    color: $color-text;
+}
+
+.hero {
+    height: 100vh;
+    background-image: url('/assets/images/costa-rica-vista.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+    }
+}
+
+.content {
+    @include responsive-container;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+// _progress-bar.scss
+.progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: $color-accent;
+    z-index: 1000;
+    transform-origin: 0 50%;
+    transition: transform $transition-speed ease-out;
+}

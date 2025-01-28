@@ -4,9 +4,20 @@
   "description": "Our blog for uvita-ojochal.com",
   "main": ".eleventy.js",
   "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site",
+    "debug": "DEBUG=* eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "costa rica",
+    "uvita",
+    "ojochal",
+    "travel",
+    "lifestyle",
+    "blog"
+  ],
   "author": "K Mickey <hello@corewood.info>",
   "license": "ISC",
   "dependencies": {
