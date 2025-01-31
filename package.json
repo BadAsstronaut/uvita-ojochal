@@ -5,6 +5,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "start": "eleventy --serve",
+    "watch": "eleventy --watch",
     "build": "eleventy",
     "clean": "rm -rf _site",
     "debug": "DEBUG=* eleventy",

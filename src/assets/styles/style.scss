@@ -1,5 +1,11 @@
+// Core
 @use 'variables';
 @use 'mixins';
+@use 'base';
+
+// Layout & Components
 @use 'layout';
 @use 'header';
+
+// Main Styles
 @use 'main';
