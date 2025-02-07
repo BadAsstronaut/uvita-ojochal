@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: base.njk
 title: Welcome to Paradise - Uvita & Ojochal, Costa Rica
 description: Discover the natural beauty and vibrant lifestyle of Uvita and Ojochal, Costa Rica. Your guide to beaches, wildlife, and sustainable living in Costa Rica's southern Pacific coast.
 ---
@@ -15,24 +15,14 @@ description: Discover the natural beauty and vibrant lifestyle of Uvita and Ojoc
     <div class="container">
         <h2>Welcome to Costa Rica's Hidden Gem</h2>
         <div class="grid">
+            {% for card in collections.featuredCards %}
             <div class="card hover-lift">
                 <div class="card-content">
-                    <h3>Natural Wonders</h3>
-                    <p>Experience the iconic Whale's Tail sandbar, witness humpback whale migrations, and explore pristine beaches.</p>
+                    <h3>{{ card.title }}</h3>
+                    <p>{{ card.description }}</p>
                 </div>
             </div>
-            <div class="card hover-lift">
-                <div class="card-content">
-                    <h3>Lifestyle & Culture</h3>
-                    <p>Embrace the Pura Vida lifestyle in our vibrant communities, where nature and modern comfort coexist.</p>
-                </div>
-            </div>
-            <div class="card hover-lift">
-                <div class="card-content">
-                    <h3>Activities & Adventures</h3>
-                    <p>From surfing and hiking to waterfall rappelling, discover endless possibilities for adventure.</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

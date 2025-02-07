@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | {{ metadata.title }}</title>
+    
+    {# SEO Meta Tags #}
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="Uvita, Ojochal, Costa Rica, Pacific coast, beaches, wildlife, real estate, sustainable living">
+    
+    {# Open Graph / Social Media Meta Tags #}
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    
+    {# Styles #}
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    
+    {# Google Fonts - Using system fonts for better performance #}
+    <style>
+        @font-face {
+            font-family: 'Nature Spirit';
+            src: url('/assets/fonts/nature-spirit.woff2') format('woff2');
+            font-display: swap;
+        }
+    </style>
+</head>
+<body>
+    {% include "components/header-component.njk" %}
+    
+    <main id="main-content">
+        {{ content | safe }}
+    </main>
+    
+    {# include "components/footer-component.html" #}
+    
+    <script src="/assets/js/navigation-script.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

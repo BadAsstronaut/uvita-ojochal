@@ -29,11 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mobile menu
   const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.primary-nav');
+  const primaryNav = document.querySelector('.primary-nav ul');
   
-  menuToggle.addEventListener('click', () => {
-    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', !isExpanded);
-    nav.classList.toggle('is-active');
-  });
+  if (menuToggle && primaryNav) {
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      primaryNav.classList.toggle('active');
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+  }
 });

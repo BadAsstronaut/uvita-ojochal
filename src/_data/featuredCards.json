@@ -1,0 +1,16 @@
+{
+  "cards": [
+    {
+      "title": "Natural Wonders",
+      "description": "Experience the iconic Whale's Tail sandbar, witness humpback whale migrations, and explore pristine beaches."
+    },
+    {
+      "title": "Lifestyle & Culture",
+      "description": "Embrace the Pura Vida lifestyle in our vibrant communities, where nature and modern comfort coexist."
+    },
+    {
+      "title": "Activities & Adventures",
+      "description": "From surfing and hiking to waterfall rappelling, discover endless possibilities for adventure."
+    }
+  ]
+} 

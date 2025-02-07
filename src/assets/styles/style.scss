@@ -1,7 +1,6 @@
 // Core
 @use 'variables';
 @use 'mixins';
-@use 'base';
 
 // Layout & Components
 @use 'layout';
@@ -9,3 +8,6 @@
 
 // Main Styles
 @use 'main';
+
+// Base Styles -- apply last for specificity
+@use 'base';

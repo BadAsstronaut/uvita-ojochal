@@ -3,27 +3,20 @@
 
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: $header-height;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+  width: 100%;
+  background: white;
   z-index: 1000;
-  transition: transform $transition-speed ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-  &.header-hidden {
-    transform: translateY(-100%);
-  }
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .header-container {
-  @include responsive-container;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 100%;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  height: $header-height;
 }
 
 .logo {
@@ -41,14 +34,51 @@
 
 .menu-toggle {
   display: none;
-  padding: 0.5rem;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 2;
+  padding: 1rem;
+  margin-left: auto;
   
   @media (max-width: $breakpoint-mobile) {
     display: block;
+  }
+  
+  .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: $color-text;
+    position: relative;
+    transition: all $transition-speed ease;
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $color-text;
+      transition: all $transition-speed ease;
+    }
+    
+    &::before { top: -8px; }
+    &::after { bottom: -8px; }
+  }
+  
+  &.active .hamburger {
+    background: transparent;
+    
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+    
+    &::after {
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
   }
 }
 
@@ -62,16 +92,18 @@
     
     @media (max-width: $breakpoint-mobile) {
       display: none;
+      position: absolute;
+      top: $header-height;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       
       &.active {
         display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 2rem;
+        gap: 2rem;
       }
     }
   }
