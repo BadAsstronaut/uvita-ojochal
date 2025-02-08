@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: base
 title: Welcome to Paradise - Uvita & Ojochal, Costa Rica
 description: Discover the natural beauty and vibrant lifestyle of Uvita and Ojochal, Costa Rica. Your guide to beaches, wildlife, and sustainable living in Costa Rica's southern Pacific coast.
 ---
@@ -15,8 +15,11 @@ description: Discover the natural beauty and vibrant lifestyle of Uvita and Ojoc
     <div class="container">
         <h2>Welcome to Costa Rica's Hidden Gem</h2>
         <div class="grid">
-            {% for card in collections.featuredCards %}
+            {% for card in featuredCards.cards %}
             <div class="card hover-lift">
+                {% if card.image %}
+                <img src="{{ card.image }}" alt="{{ card.title }}" loading="lazy">
+                {% endif %}
                 <div class="card-content">
                     <h3>{{ card.title }}</h3>
                     <p>{{ card.description }}</p>
@@ -26,3 +29,25 @@ description: Discover the natural beauty and vibrant lifestyle of Uvita and Ojoc
         </div>
     </div>
 </section>
+
+{% if collections.posts %}
+<section class="section alternate">
+    <div class="container">
+        <h2>Latest Stories</h2>
+        <div class="grid">
+            {% for post in collections.posts | reverse | limit(3) %}
+            <div class="card">
+                {% if post.data.image %}
+                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+                {% endif %}
+                <div class="card-content">
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.description }}</p>
+                    <a href="{{ post.url }}" class="button">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

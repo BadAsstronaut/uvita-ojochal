@@ -23,12 +23,13 @@ if (menuToggle && navLinks) {
     });
 }
 
-// Parallax effect for hero section
+// Update the parallax effect for hero section
 const hero = document.querySelector('.hero');
 if (hero) {
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+        const heroAfter = hero.style;
+        heroAfter.setProperty('--scroll-offset', `${scrolled * 0.5}px`);
     });
 }
 
@@ -84,4 +85,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lazyImages.forEach(img => lazyImageObserver.observe(img));
     }
+});
+
+// Add this after existing observer code
+function handleImageLoad(img) {
+  if (img.complete) {
+    img.style.opacity = '0';
+    img.style.animation = 'fadeInImage 0.8s ease-out forwards';
+  } else {
+    img.addEventListener('load', () => {
+      img.style.opacity = '0';
+      img.style.animation = 'fadeInImage 0.8s ease-out forwards';
+    });
+  }
+}
+
+// Initialize all images
+document.querySelectorAll('img').forEach(handleImageLoad);
+
+// Optional: Handle dynamically added images
+const mutObserver = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+      if (node.nodeName === 'IMG') {
+        handleImageLoad(node);
+      }
+    });
+  });
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
 });

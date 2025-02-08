@@ -2,6 +2,7 @@ const path = require('path');
 const sass = require('sass');
 const navPlugin = require('@11ty/eleventy-navigation');
 const { eleventyImageTransformPlugin } = require('@11ty/eleventy-img');
+const fs = require('fs');
 
 const imageConfig = {
     extensions: "html",
@@ -28,43 +29,42 @@ module.exports = function(eleventyConfig) {
     // Add shortcodes
     eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`);
 
-    // Handle SCSS
+    // Watch Sass files and assets
+    eleventyConfig.addWatchTarget("./src/assets/");
+    
+    // Compile Sass
     eleventyConfig.addTemplateFormats("scss");
     eleventyConfig.addExtension("scss", {
         outputFileExtension: "css",
-        
         compile: async function(inputContent, inputPath) {
-            // Skip partials (files starting with _)
-            let parsed = path.parse(inputPath);
-            if (parsed.name.startsWith("_")) {
+            // Skip if it's a partial Sass file
+            if (path.basename(inputPath).startsWith("_")) {
                 return;
             }
 
-            // Compile SCSS to CSS
-            let result = sass.compileString(inputContent, {
-                loadPaths: [
-                    parsed.dir || ".",
-                    path.join(process.cwd(), "src/assets/styles")
-                ],
-                sourceMap: true,
-                style: "compressed"
-            });
-
-            // Ensure output directory exists
-            return async () => {
-                return result.css;
-            };
-        },
-
-        // This controls the output directory structure
-        getOutputPath: function(inputPath) {
             let parsed = path.parse(inputPath);
-            // Skip partials
-            if (parsed.name.startsWith("_")) {
-                return false;
+            let result;
+
+            try {
+                result = sass.compile(inputPath, {
+                    loadPaths: [
+                        parsed.dir,
+                        "src/assets/styles",
+                        "node_modules"
+                    ],
+                    sourceMap: true,
+                    style: "expanded"
+                });
+
+                // This is important for live reloading
+                this.addDependencies(inputPath, result.loadedUrls);
+
+                return async () => {
+                    return result.css;
+                };
+            } catch (err) {
+                console.error('Sass compilation error:', err);
             }
-            // Maintain directory structure but change extension
-            return inputPath.replace(/^src\//, "_site/assets/styles/").replace(/\.scss$/, ".css");
         }
     });
     
@@ -74,7 +74,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/fonts");
     
     // Watch targets
-    eleventyConfig.addWatchTarget("./src/assets/styles/");
     eleventyConfig.addWatchTarget("./src/assets/js/");
     
     // Base Config
@@ -86,7 +85,7 @@ module.exports = function(eleventyConfig) {
             layouts: "_includes/layouts",
             data: "_data"
         },
-        templateFormats: ["njk", "md", "html", "scss", "css"],
+        templateFormats: ["njk", "md", "html"],
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
         dataTemplateEngine: "njk"

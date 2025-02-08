@@ -5,9 +5,13 @@
 // Layout & Components
 @use 'layout';
 @use 'header';
+@use 'cards';
 
 // Main Styles
 @use 'main';
 
+@use 'about';
+
 // Base Styles -- apply last for specificity
 @use 'base';
+

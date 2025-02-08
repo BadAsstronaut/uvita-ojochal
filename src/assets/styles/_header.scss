@@ -4,9 +4,9 @@
 .site-header {
   position: fixed;
   width: 100%;
-  background: white;
+  background: $color-secondary;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
@@ -26,7 +26,7 @@
   text-decoration: none;
   transition: color 0.3s ease;
   z-index: 2;
-  
+
   &:hover {
     color: $color-secondary;
   }
@@ -39,11 +39,11 @@
   cursor: pointer;
   padding: 1rem;
   margin-left: auto;
-  
+
   @media (max-width: $breakpoint-mobile) {
     display: block;
   }
-  
+
   .hamburger {
     display: block;
     width: 24px;
@@ -51,7 +51,7 @@
     background: $color-text;
     position: relative;
     transition: all $transition-speed ease;
-    
+
     &::before,
     &::after {
       content: '';
@@ -62,19 +62,24 @@
       background: $color-text;
       transition: all $transition-speed ease;
     }
-    
-    &::before { top: -8px; }
-    &::after { bottom: -8px; }
+
+    &::before {
+      top: -8px;
+    }
+
+    &::after {
+      bottom: -8px;
+    }
   }
-  
+
   &.active .hamburger {
     background: transparent;
-    
+
     &::before {
       top: 0;
       transform: rotate(45deg);
     }
-    
+
     &::after {
       bottom: 0;
       transform: rotate(-45deg);
@@ -89,7 +94,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    
+
     @media (max-width: $breakpoint-mobile) {
       display: none;
       position: absolute;
@@ -98,23 +103,34 @@
       right: 0;
       background: white;
       padding: 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
       &.active {
         display: flex;
         flex-direction: column;
+        align-items: flex-end;
         gap: 2rem;
+      }
+
+      li {
+        width: 100%;
+        text-align: right;
+
+        a {
+          display: block;
+          padding: 0.5rem 0;
+        }
       }
     }
   }
-  
+
   a {
-    color: $color-text;
+    color: $light-text;
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: all 0.3s ease;
     position: relative;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -126,7 +142,7 @@
       transition: all 0.3s ease;
       transform: translateX(-50%);
     }
-    
+
     &:hover::after {
       width: 100%;
     }
