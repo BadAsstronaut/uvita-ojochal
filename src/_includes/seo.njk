@@ -1,0 +1,21 @@
+---
+# Required fields
+title: {{ title }}
+description: {{ description }}
+
+# Optional SEO fields (will use defaults from metadata.json if not provided)
+keywords: {{ keywords or metadata.seo.defaultKeywords }}
+featuredImage: {{ featuredImage or metadata.seo.defaultImage }}
+author: {{ author or metadata.author.name }}
+
+# Social media specific (optional)
+twitterCard: summary_large_image
+ogType: {{ ogType or metadata.seo.type }}
+
+# Structured data (optional)
+structuredData:
+  "@type": "{{ structuredData['@type'] or 'WebPage' }}"
+  name: {{ title }}
+  description: {{ description }}
+  image: {{ featuredImage or metadata.seo.defaultImage }}
+--- 

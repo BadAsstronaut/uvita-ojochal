@@ -9,6 +9,7 @@
   margin-top: $header-height;
   max-width: $container-max-width;
   margin: 0 auto;
+  padding-top: calc($header-height + 1rem);
 
   .page-title {
     text-align: center;

@@ -9,21 +9,26 @@ const imageConfig = {
     formats: ["webp"],
     widths: [300, 600, 900, "auto"],
     defaultAttributes: {
-      loading: "lazy",
-      decoding: "async",
-      sizes: "100vw",
+        loading: "lazy",
+        decoding: "async",
+        sizes: "100vw",
     },
     urlPath: "/images/",
 };
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
     // Add plugins
     eleventyConfig.addPlugin(navPlugin);
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, imageConfig);
-    
+
     // Add filters
-    eleventyConfig.addFilter("limit", function(arr, limit) {
+    eleventyConfig.addFilter("limit", function (arr, limit) {
         return arr.slice(0, limit);
+    });
+
+    // Add current year filter
+    eleventyConfig.addFilter('currentYear', () => {
+        return new Date().getFullYear();
     });
 
     // Add shortcodes
@@ -31,12 +36,12 @@ module.exports = function(eleventyConfig) {
 
     // Watch Sass files and assets
     eleventyConfig.addWatchTarget("./src/assets/");
-    
+
     // Compile Sass
     eleventyConfig.addTemplateFormats("scss");
     eleventyConfig.addExtension("scss", {
         outputFileExtension: "css",
-        compile: async function(inputContent, inputPath) {
+        compile: async function (inputContent, inputPath) {
             // Skip if it's a partial Sass file
             if (path.basename(inputPath).startsWith("_")) {
                 return;
@@ -67,15 +72,15 @@ module.exports = function(eleventyConfig) {
             }
         }
     });
-    
+
     // Copy static assets
     eleventyConfig.addPassthroughCopy("src/assets/images");
     eleventyConfig.addPassthroughCopy("src/assets/js");
     eleventyConfig.addPassthroughCopy("src/assets/fonts");
-    
+
     // Watch targets
     eleventyConfig.addWatchTarget("./src/assets/js/");
-    
+
     // Base Config
     return {
         dir: {

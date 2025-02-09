@@ -3,5 +3,20 @@
   "url": "https://uvita-ojochal.com/",
   "language": "en",
   "description": "Costa Rica Living: An American family moves to paradise. Beaches, jungles, waterfalls. Follow our adventures.",
-  "feedUrl": "https://eleventy-not-so-minimal-blog-starter.netlify.app/feed.xml"
+  "author": {
+    "name": "Markie Mickey",
+    "email": "markie@uvita-ojochal.com"
+  },
+  "social": {
+    "bluesky": "@uvita-ojochal.com"
+  },
+  "seo": {
+    "defaultTitle": "Eyes on Ojochal - Costa Rica Living in Paradise",
+    "titleTemplate": "%s | Eyes on Ojochal",
+    "defaultDescription": "Discover the beauty of Costa Rica's southern Pacific coast. Experience Uvita and Ojochal through our eyes - pristine beaches, lush jungles, and vibrant culture.",
+    "defaultImage": "/assets/images/ocean_sunset_ventanas.jpg",
+    "defaultKeywords": "Costa Rica, Uvita, Ojochal, Pacific coast, beaches, wildlife, real estate, sustainable living, expat life, tropical paradise",
+    "locale": "en_US",
+    "type": "website"
+  }
 }

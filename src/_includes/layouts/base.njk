@@ -1,32 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ metadata.language }}">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ title }} | {{ metadata.title }}</title>
-        {# SEO Meta Tags #}
-        <meta name="description" content="{{ description }}">
         <meta
-        name="keywords"
-            content="Uvita, Ojochal, Costa Rica, Pacific coast, beaches, wildlife, real estate, sustainable living"> {# Open Graph / Social Media Meta Tags #}
-        <meta property="og:title" content="{{ title }}">
+        name="viewport" content="width=device-width, initial-scale=1.0">
+        {# Basic Meta Tags #}
+        <title>
+            {% if title %}
+                {{ title }} | {{ metadata.title }}
+            {% else %}
+                {{ metadata.seo.defaultTitle }}
+            {% endif %}
+        </title>
+        <meta name="description" content="{{ description or metadata.seo.defaultDescription }}">
+        <meta name="keywords" content="{{ keywords or metadata.seo.defaultKeywords }}">
         <meta
-        property="og:description" content="{{ description }}"> 
-        
-        {# Styles #}
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
+        name="author" content="{{ metadata.author.name }}"> {# Canonical URL #}
+        <link
+        rel="canonical" href="{{ metadata.url }}{{ page.url }}"> {# Open Graph Meta Tags #}
+        <meta property="og:site_name" content="{{ metadata.title }}">
+        <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ metadata.seo.defaultTitle }}{% endif %}">
+        <meta property="og:description" content="{{ description or metadata.seo.defaultDescription }}">
+        <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+        <meta property="og:locale" content="{{ metadata.seo.locale }}">
+        <meta property="og:type" content="{{ metadata.seo.type }}">
+        <meta
+        property="og:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}"> {# Twitter Card Meta Tags #}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="{{ metadata.social.twitter }}">
+        <meta name="twitter:creator" content="{{ metadata.social.twitter }}">
+        <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ metadata.seo.defaultTitle }}{% endif %}">
+        <meta name="twitter:description" content="{{ description or metadata.seo.defaultDescription }}">
+        <meta
+        name="twitter:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}"> {# Favicon #}
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
-        <link rel="stylesheet" href="/assets/styles/style.css">
-        <link rel="stylesheet" href="/assets/styles/header.scss">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
+        <link
+        rel="manifest" href="/site.webmanifest"> {# Styles #}
+        <link
+        rel="stylesheet" href="/assets/styles/style.css">
+        {# Schema.org Markup #}
+        <script type="application/ld+json">
+            { "@context": "https://schema.org", "@type": "WebSite", "name": "{{ metadata.title }}",
+                              "url": "{{ metadata.url }}",
+                              "description": "{{ metadata.seo.defaultDescription }} ", "author": { "@type": "Person", "name": "{{ metadata.author.name }}
+            " } }
+        </script>
     </head>
     <body>
         {% include "components/header-component.njk" %}
         <main id="main-content" {% if mainContentClass %} class="{{ mainContentClass }}" {% endif %}>
             {{ content | safe }}
         </main>
-        {# include "components/footer-component.html" #}
-        <script src="/assets/js/navigation-script.js"></script>
+        {% include "components/footer-component.njk" %}
         <script src="/assets/js/main.js"></script>
     </body>
 </html>

@@ -2,16 +2,17 @@
 @use 'variables';
 @use 'mixins';
 
-// Layout & Components
+// Base Styles
+@use 'base';
 @use 'layout';
+
+// Components
 @use 'header';
+@use 'footer';
 @use 'cards';
+@use 'contact';
+@use 'about';
+@use 'success';
 
 // Main Styles
 @use 'main';
-
-@use 'about';
-
-// Base Styles -- apply last for specificity
-@use 'base';
-

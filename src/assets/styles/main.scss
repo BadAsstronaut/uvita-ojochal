@@ -7,6 +7,7 @@
   padding: 8rem 2rem;
   max-width: $container-max-width;
   margin: 0 auto;
+  padding-top: calc($header-height + 1rem);
 
   &.alternate {
     background-color: white;
@@ -33,28 +34,6 @@
 
   .card-content {
     padding: 2rem;
-  }
-}
-
-// Footer
-.site-footer {
-  background: $color-secondary;
-  color: white;
-  padding: 4rem 2rem 2rem;
-
-  .footer-content {
-    max-width: $container-max-width;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 4rem;
-  }
-
-  .footer-bottom {
-    text-align: center;
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
