@@ -1,0 +1,16 @@
+# Allow legitimate search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Block all other bots
+User-agent: *
+Disallow: /
+
+# Sitemap location
+Sitemap: https://uvita-ojochal.com/sitemap.xml 

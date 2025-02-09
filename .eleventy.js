@@ -21,6 +21,29 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(navPlugin);
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, imageConfig);
 
+    // Sitemap Configuration
+    eleventyConfig.addGlobalData("eleventyComputed", {
+        permalink: (data) => {
+            // Skip drafts from sitemap
+            if (data.draft) {
+                return false;
+            }
+            return data.permalink;
+        },
+        eleventyExcludeFromCollections: (data) => {
+            // Exclude drafts from collections
+            return data.draft || data.eleventyExcludeFromCollections;
+        }
+    });
+
+    // Create a collection of all pages for sitemap
+    eleventyConfig.addCollection("sitemapPages", function (collectionApi) {
+        return collectionApi.getAll().filter(function (item) {
+            // Filter out drafts and explicitly excluded items
+            return !item.data.draft && !item.data.eleventyExcludeFromCollections;
+        });
+    });
+
     // Add filters
     eleventyConfig.addFilter("limit", function (arr, limit) {
         return arr.slice(0, limit);
@@ -29,6 +52,36 @@ module.exports = function (eleventyConfig) {
     // Add current year filter
     eleventyConfig.addFilter('currentYear', () => {
         return new Date().getFullYear();
+    });
+
+    // Add sitemap filters
+    eleventyConfig.addFilter('absoluteUrl', (url, base) => {
+        try {
+            return new URL(url, base).toString();
+        } catch (e) {
+            console.error(`Error resolving URL: ${url} with base ${base}`);
+            return url;
+        }
+    });
+
+    eleventyConfig.addFilter('dateToISO', (date) => {
+        if (!date) return '';
+        try {
+            return new Date(date).toISOString();
+        } catch (e) {
+            console.error(`Error converting date: ${date}`);
+            return '';
+        }
+    });
+
+    eleventyConfig.addFilter('lastModifiedDate', (filename) => {
+        try {
+            const stat = fs.statSync(filename);
+            return stat.mtime;
+        } catch (e) {
+            console.error(`Error getting last modified date for ${filename}`);
+            return new Date();
+        }
     });
 
     // Add shortcodes
@@ -78,6 +131,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/js");
     eleventyConfig.addPassthroughCopy("src/assets/fonts");
     eleventyConfig.addPassthroughCopy("src/site.webmanifest");
+    eleventyConfig.addPassthroughCopy("src/robots.txt");
 
     // Watch targets
     eleventyConfig.addWatchTarget("./src/assets/js/");
