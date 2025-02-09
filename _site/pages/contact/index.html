@@ -34,12 +34,12 @@
         
         <script type="application/ld+json">
             { "@context": "https://schema.org", "@type": "WebSite", "name": "Eyes on Ojochal",
-                              "url": "https://uvita-ojochal.com/",
-                              "description": "Discover the beauty of Costa Rica&#39;s southern Pacific coast. Experience Uvita and Ojochal through our eyes - pristine beaches, lush jungles, and vibrant culture. ", "author": { "@type": "Person", "name": "Markie Mickey
-            " } }
+                                                      "url": "https://uvita-ojochal.com/
+            ", "description": "Discover the beauty of Costa Rica&#39;s southern Pacific coast. Experience Uvita and Ojochal through our eyes - pristine beaches, lush jungles, and vibrant culture. ", "author": { "@type": "Person", "name": "Markie Mickey " } }
         </script>
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
         <header class="site-header" role="banner">
   <div class="header-container">
     <a href="/" class="logo" aria-label="Uvita-Ojochal">
@@ -57,30 +57,31 @@
   </div>
 </header>
 
-        <main id="main-content" class="contact-page">
+        <main id="main-content" class="contact-page" tabindex="-1">
             
-
-<section class="section">
+<section class="section" aria-labelledby="contact-heading">
     <div class="contact-container">
-        <h1>Contact Us</h1>
+        <h1 id="contact-heading">Contact Us</h1>
         <p class="contact-intro">Have questions about Uvita or Ojochal? We'd love to hear from you! Fill out the form below and
             we'll get back to you soon.</p>
         <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="34ec1e52-4e0c-421d-b8dc-267af0f54907">
-            <input type="hidden" name="redirect" value="/pages/contact/success">
+            <input type="hidden" name="redirect" value="https://uvita-ojochal.com/pages/contact/success">
             <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required="" placeholder="Your name" class="form-control">
+                <label for="name" class="required">Name</label>
+                <input type="text" id="name" name="name" required="" aria-required="true" placeholder="Your name" class="form-control" autocomplete="name">
             </div>
             <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required="" placeholder="your.email@example.com" class="form-control">
+                <label for="email" class="required">Email</label>
+                <input type="email" id="email" name="email" required="" aria-required="true" placeholder="your.email@example.com" class="form-control" autocomplete="email">
             </div>
             <div class="form-group">
-                <label for="message">Message *</label>
-                <textarea id="message" name="message" required="" placeholder="Your message here..." class="form-control" rows="6"></textarea>
+                <label for="message" class="required">Message</label>
+                <textarea id="message" name="message" required="" aria-required="true" placeholder="Your message here..." class="form-control" rows="6"></textarea>
             </div>
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off">
+            <div class="visually-hidden">
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+            </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
     </div>

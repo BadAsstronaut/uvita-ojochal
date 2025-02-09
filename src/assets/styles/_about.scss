@@ -2,6 +2,7 @@
 
 .main-content-about {
   background: url('/assets/images/into_the_jungle.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 .about-section {
@@ -25,7 +26,7 @@
   overflow: hidden;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); // Match card shadow from _cards.scss
   transition: transform 0.3s ease;
-  padding: 4rem;
+  padding: 4rem 0;
 
   .about-image {
     width: 100%;
@@ -48,7 +49,7 @@
   }
 
   .about-text {
-    padding: 0 2rem;
+    padding: 0;
 
     h2 {
       color: $color-secondary;

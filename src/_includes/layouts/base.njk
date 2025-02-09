@@ -43,14 +43,14 @@
         {# Schema.org Markup #}
         <script type="application/ld+json">
             { "@context": "https://schema.org", "@type": "WebSite", "name": "{{ metadata.title }}",
-                              "url": "{{ metadata.url }}",
-                              "description": "{{ metadata.seo.defaultDescription }} ", "author": { "@type": "Person", "name": "{{ metadata.author.name }}
-            " } }
+                                                      "url": "{{ metadata.url }}
+            ", "description": "{{ metadata.seo.defaultDescription }} ", "author": { "@type": "Person", "name": "{{ metadata.author.name }} " } }
         </script>
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
         {% include "components/header-component.njk" %}
-        <main id="main-content" {% if mainContentClass %} class="{{ mainContentClass }}" {% endif %}>
+        <main id="main-content" {% if mainContentClass %} class="{{ mainContentClass }}" {% endif %} tabindex="-1">
             {{ content | safe }}
         </main>
         {% include "components/footer-component.njk" %}

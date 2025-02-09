@@ -120,4 +120,82 @@ document.addEventListener('DOMContentLoaded', () => {
             heroAfter.setProperty('--scroll-offset', `${scrolled * 0.5}px`);
         });
     }
+
+    // Form validation
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        const formInputs = contactForm.querySelectorAll('input[required], textarea[required]');
+
+        formInputs.forEach(input => {
+            // Add error message container
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.id = `${input.id}-error`;
+            input.setAttribute('aria-describedby', errorDiv.id);
+            input.parentNode.insertBefore(errorDiv, input.nextSibling);
+
+            // Validate on blur
+            input.addEventListener('blur', () => {
+                validateInput(input);
+            });
+
+            // Validate on input
+            input.addEventListener('input', () => {
+                if (input.getAttribute('aria-invalid') === 'true') {
+                    validateInput(input);
+                }
+            });
+        });
+
+        // Form submission
+        contactForm.addEventListener('submit', (e) => {
+            let isValid = true;
+            formInputs.forEach(input => {
+                if (!validateInput(input)) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                // Focus first invalid input
+                contactForm.querySelector('[aria-invalid="true"]')?.focus();
+            }
+        });
+    }
+
+    function validateInput(input) {
+        const errorDiv = document.getElementById(`${input.id}-error`);
+        let isValid = true;
+        let errorMessage = '';
+
+        // Clear previous state
+        input.setAttribute('aria-invalid', 'false');
+        errorDiv.textContent = '';
+        errorDiv.classList.remove('visible');
+
+        // Required field validation
+        if (input.hasAttribute('required') && !input.value.trim()) {
+            isValid = false;
+            errorMessage = 'This field is required';
+        }
+
+        // Email validation
+        if (input.type === 'email' && input.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(input.value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address';
+            }
+        }
+
+        // Update UI if invalid
+        if (!isValid) {
+            input.setAttribute('aria-invalid', 'true');
+            errorDiv.textContent = errorMessage;
+            errorDiv.classList.add('visible');
+        }
+
+        return isValid;
+    }
 });

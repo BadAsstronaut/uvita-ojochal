@@ -39,6 +39,11 @@
             margin-bottom: 0.8rem;
             font-weight: 500;
             color: $color-text;
+
+            &.required::after {
+                content: " *";
+                color: $color-accent;
+            }
         }
 
         .form-control {
@@ -49,9 +54,18 @@
             font-size: 1.6rem;
             transition: border-color 0.3s ease;
 
-            &:focus {
-                outline: none;
+            &:focus-visible {
+                outline: 3px solid $color-primary;
+                outline-offset: 0;
                 border-color: $color-primary;
+            }
+
+            &:invalid:not(:placeholder-shown) {
+                border-color: $color-accent;
+            }
+
+            &[aria-invalid="true"] {
+                border-color: $color-accent;
             }
         }
 
@@ -74,5 +88,22 @@
         &:hover {
             background-color: color.adjust($color-primary, $lightness: -10%);
         }
+
+        &:focus-visible {
+            outline: 3px solid $color-primary;
+            outline-offset: 2px;
+        }
+    }
+}
+
+// Error messages
+.error-message {
+    color: $color-accent;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    display: none;
+
+    &.visible {
+        display: block;
     }
 }

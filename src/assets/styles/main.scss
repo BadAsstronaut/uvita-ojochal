@@ -6,6 +6,7 @@
 .section {
   padding: 8rem 2rem;
   max-width: $container-max-width;
+  min-height: calc(100vh - 8rem);
   margin: 0 auto;
   padding-top: calc($header-height + 1rem);
 
