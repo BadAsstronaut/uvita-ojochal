@@ -1,12 +1,13 @@
 @use 'variables' as *;
 @use 'base';
+@use 'contact';
 
 // Content Sections
 .section {
   padding: 8rem 2rem;
   max-width: $container-max-width;
   margin: 0 auto;
-  
+
   &.alternate {
     background-color: white;
   }
@@ -17,19 +18,19 @@
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
-  
+
   img {
     width: 100%;
     height: 25rem;
     object-fit: cover;
   }
-  
+
   .card-content {
     padding: 2rem;
   }
@@ -40,7 +41,7 @@
   background: $color-secondary;
   color: white;
   padding: 4rem 2rem 2rem;
-  
+
   .footer-content {
     max-width: $container-max-width;
     margin: 0 auto;
@@ -48,12 +49,12 @@
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 4rem;
   }
-  
+
   .footer-bottom {
     text-align: center;
     margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -74,7 +75,7 @@
 
 .hover-lift {
   transition: transform 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
