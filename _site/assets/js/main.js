@@ -53,32 +53,121 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Apply preferred language from localStorage on page load
+        // Auto-detect browser language on first visit (if no preference stored)
         const storedLang = localStorage.getItem('preferredLanguage');
-        if (storedLang) {
-            const currentLang = document.documentElement.lang;
+        const currentLang = document.documentElement.lang;
 
-            // Only redirect if the stored language is different from current
-            if (storedLang !== currentLang) {
+        if (!storedLang) {
+            // Get browser language (only consider 'en' or 'es')
+            const browserLang = navigator.language.split('-')[0];
+            const supportedLang = ['en', 'es'].includes(browserLang) ? browserLang : 'en';
+            
+            // Only redirect if the detected language is different from current
+            if (supportedLang !== currentLang) {
                 const currentPath = window.location.pathname;
-                const newUrl = getLocalizedUrl(currentPath, storedLang);
+                const newUrl = getLocalizedUrl(currentPath, supportedLang);
+                localStorage.setItem('preferredLanguage', supportedLang);
                 window.location.href = newUrl;
             }
+        } else if (storedLang !== currentLang) {
+            // Apply stored language if different from current
+            const currentPath = window.location.pathname;
+            const newUrl = getLocalizedUrl(currentPath, storedLang);
+            window.location.href = newUrl;
         }
     }
 
     // Helper function to get localized URL
     function getLocalizedUrl(path, locale) {
-        // Remove any existing locale prefix
-        let cleanPath = path.replace(/^\/(en|es)\//, '/');
-
+        const currentLocale = document.documentElement.lang;
+        
+        // If already on the target locale, no change needed
+        if (currentLocale === locale) {
+            return path;
+        }
+        
         // Handle root path special case
-        if (cleanPath === '/' || cleanPath === '') {
+        if (path === '/' || path === '') {
             return locale === 'en' ? '/' : `/${locale}/`;
         }
-
+        
+        // Step 1: Clean the path - remove locale prefix
+        let cleanPath = path;
+        if (currentLocale === 'es' && path.startsWith('/es')) {
+            cleanPath = path.replace(/^\/es/, '');
+        }
+        
+        // Step 2: Check for direct matches in our path mappings first
+        const result = tryDirectMapping(cleanPath, currentLocale, locale);
+        if (result) {
+            return locale === 'en' ? result : `/${locale}${result}`;
+        }
+        
+        // Step 3: Use pattern replacement for more complex paths
+        let transformedPath = applyPatternReplacements(cleanPath, currentLocale, locale);
+        
         // Add locale prefix for non-English
-        return locale === 'en' ? cleanPath : `/${locale}${cleanPath}`;
+        return locale === 'en' ? transformedPath : `/${locale}${transformedPath}`;
+    }
+    
+    // Try to find a direct match in our mappings
+    function tryDirectMapping(path, fromLocale, toLocale) {
+        const pathMappings = {
+            'en': {
+                '/recommendations': '/recomendaciones',
+                '/recommendations/': '/recomendaciones/',
+                '/recommendations/landscaping': '/recomendaciones/paisajismo',
+                '/recommendations/landscaping/': '/recomendaciones/paisajismo/',
+                '/about': '/nosotros',
+                '/about/': '/nosotros/',
+                '/contact': '/contacto',
+                '/contact/': '/contacto/',
+                '/contact/success': '/contacto/exito',
+                '/contact/success/': '/contacto/exito/'
+            },
+            'es': {
+                '/recomendaciones': '/recommendations',
+                '/recomendaciones/': '/recommendations/',
+                '/recomendaciones/paisajismo': '/recommendations/landscaping',
+                '/recomendaciones/paisajismo/': '/recommendations/landscaping/',
+                '/nosotros': '/about',
+                '/nosotros/': '/about/',
+                '/contacto': '/contact',
+                '/contacto/': '/contact/',
+                '/contacto/exito': '/contact/success',
+                '/contacto/exito/': '/contact/success/'
+            }
+        };
+        
+        return pathMappings[fromLocale][path];
+    }
+    
+    // Apply pattern-based replacements
+    function applyPatternReplacements(path, fromLocale, toLocale) {
+        let result = path;
+        
+        const patterns = {
+            'en': [
+                { from: /\/recommendations\b/g, to: '/recomendaciones' },
+                { from: /\/landscaping\b/g, to: '/paisajismo' },
+                { from: /\/about\b/g, to: '/nosotros' },
+                { from: /\/contact\b/g, to: '/contacto' },
+                { from: /\/success\b/g, to: '/exito' }
+            ],
+            'es': [
+                { from: /\/recomendaciones\b/g, to: '/recommendations' },
+                { from: /\/paisajismo\b/g, to: '/landscaping' },
+                { from: /\/nosotros\b/g, to: '/about' },
+                { from: /\/contacto\b/g, to: '/contact' },
+                { from: /\/exito\b/g, to: '/success' }
+            ]
+        };
+        
+        patterns[fromLocale].forEach(pattern => {
+            result = result.replace(pattern.from, pattern.to);
+        });
+        
+        return result;
     }
 
     // Intersection Observer for fade-in animations

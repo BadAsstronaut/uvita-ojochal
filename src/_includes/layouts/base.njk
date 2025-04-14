@@ -31,13 +31,39 @@
         {% if page.url %}
             {% set currentPath = page.url %}
             {% if locale == 'en' %}
+                {% set esPath = currentPath %}
+                {% if currentPath.includes('/recommendations') %}
+                    {% set esPath = currentPath | replace('/recommendations', '/recomendaciones') %}
+                {% endif %}
+                {% if currentPath.includes('/landscaping') %}
+                    {% set esPath = esPath | replace('/landscaping', '/paisajismo') %}
+                {% endif %}
+                {% if currentPath.includes('/about') %}
+                    {% set esPath = esPath | replace('/about', '/nosotros') %}
+                {% endif %}
+                {% if currentPath.includes('/contact') %}
+                    {% set esPath = esPath | replace('/contact', '/contacto') %}
+                {% endif %}
                 <link rel="alternate" hreflang="en" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
-                <link rel="alternate" hreflang="es" href="{{ metadata.url }}es{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+                <link rel="alternate" hreflang="es" href="{{ metadata.url }}es{{ esPath | replace('/es/', '/') | replace('//', '/') }}" />
                 <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
             {% else %}
-                <link rel="alternate" hreflang="en" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+                {% set enPath = currentPath %}
+                {% if currentPath.includes('/recomendaciones') %}
+                    {% set enPath = currentPath | replace('/recomendaciones', '/recommendations') %}
+                {% endif %}
+                {% if currentPath.includes('/paisajismo') %}
+                    {% set enPath = enPath | replace('/paisajismo', '/landscaping') %}
+                {% endif %}
+                {% if currentPath.includes('/nosotros') %}
+                    {% set enPath = enPath | replace('/nosotros', '/about') %}
+                {% endif %}
+                {% if currentPath.includes('/contacto') %}
+                    {% set enPath = enPath | replace('/contacto', '/contact') %}
+                {% endif %}
+                <link rel="alternate" hreflang="en" href="{{ metadata.url }}{{ enPath | replace('/es/', '/') | replace('//', '/') }}" />
                 <link rel="alternate" hreflang="es" href="{{ metadata.url }}es{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
-                <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+                <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ enPath | replace('/es/', '/') | replace('//', '/') }}" />
             {% endif %}
         {% endif %}
         
