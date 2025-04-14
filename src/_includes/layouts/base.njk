@@ -21,31 +21,58 @@
         <meta name="description" content="{{ description or metadata.seo.defaultDescription }}">
         <meta name="keywords" content="{{ keywords or metadata.seo.defaultKeywords }}">
         <meta
-        name="author" content="{{ metadata.author.name }}"> {# Canonical URL #}
+        name="author" content="{{ metadata.author.name }}"> 
+        
+        {# Canonical URL - Fixed to avoid double slashes #}
         <link
-        rel="canonical" href="{{ metadata.url }}{{ page.url }}"> {# Open Graph Meta Tags #}
+        rel="canonical" href="{{ metadata.url }}{% if page.url.startsWith('/') %}{{ page.url | replace('/es/', '/es/') | replace('//', '/') }}{% else %}/{{ page.url }}{% endif %}"> 
+        
+        {# Language Alternates #}
+        {% if page.url %}
+            {% set currentPath = page.url %}
+            {% if locale == 'en' %}
+                <link rel="alternate" hreflang="en" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+                <link rel="alternate" hreflang="es" href="{{ metadata.url }}es{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+                <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+            {% else %}
+                <link rel="alternate" hreflang="en" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+                <link rel="alternate" hreflang="es" href="{{ metadata.url }}es{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+                <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ currentPath | replace('/es/', '/') | replace('//', '/') }}" />
+            {% endif %}
+        {% endif %}
+        
+        {# Open Graph Meta Tags #}
         <meta property="og:site_name" content="{{ metadata.title }}">
         <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ metadata.seo.defaultTitle }}{% endif %}">
         <meta property="og:description" content="{{ description or metadata.seo.defaultDescription }}">
-        <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+        <meta property="og:url" content="{{ metadata.url }}{% if page.url.startsWith('/') %}{{ page.url | replace('/es/', '/es/') | replace('//', '/') }}{% else %}/{{ page.url }}{% endif %}">
         <meta property="og:locale" content="{{ metadata.seo.locale }}">
         <meta property="og:type" content="{{ metadata.seo.type }}">
         <meta
-        property="og:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}"> {# Twitter Card Meta Tags #}
+        property="og:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        
+        {# Twitter Card Meta Tags #}
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="{{ metadata.social.twitter }}">
-        <meta name="twitter:creator" content="{{ metadata.social.twitter }}">
+        <meta name="twitter:site" content="{{ metadata.social.twitter or '@uvitaojochal' }}">
+        <meta name="twitter:creator" content="{{ metadata.social.twitter or '@uvitaojochal' }}">
         <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ metadata.seo.defaultTitle }}{% endif %}">
         <meta name="twitter:description" content="{{ description or metadata.seo.defaultDescription }}">
         <meta
-        name="twitter:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}"> {# Favicon #}
+        name="twitter:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}">
+        
+        {# Favicon #}
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
         <link
-        rel="manifest" href="/site.webmanifest"> {# Styles #}
+        rel="manifest" href="/site.webmanifest"> 
+        
+        {# Styles #}
         <link
         rel="stylesheet" href="/assets/styles/style.css">
+        
         {# Lucide Icons #}
         <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
         <script>
@@ -53,7 +80,8 @@
                 lucide.createIcons();
             };
         </script>
-        {# Schema.org Markup #}
+        
+        {# Enhanced Schema.org Markup #}
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -64,9 +92,107 @@
                 "author": {
                     "@type": "Person",
                     "name": "{{ metadata.author.name }}"
+                },
+                "inLanguage": "{{ locale }}"
+            }
+        </script>
+        
+        {% if page.url and page.url.includes('landscaping') or page.url and page.url.includes('paisajismo') %}
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "name": "Landscaping La Costa",
+                "image": "{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}",
+                "description": "{{ description or metadata.seo.defaultDescription }}",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "Puntarenas",
+                    "addressCountry": "CR"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "9.1579",
+                    "longitude": "-83.7458"
+                },
+                "url": "{{ metadata.url }}{% if page.url.startsWith('/') %}{{ page.url | replace('/es/', '/es/') | replace('//', '/') }}{% else %}/{{ page.url }}{% endif %}",
+                "telephone": "+50687013876",
+                "priceRange": "$$",
+                "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday"
+                    ],
+                    "opens": "08:00",
+                    "closes": "17:00"
+                },
+                "sameAs": [
+                    "https://www.facebook.com/profile.php?id=100092627143854"
+                ],
+                "areaServed": [
+                    {
+                        "@type": "City",
+                        "name": "Uvita"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Ojochal"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Dominical"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Quepos"
+                    },
+                    {
+                        "@type": "City",
+                        "name": "Pérez Zeledón"
+                    }
+                ],
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Landscaping Services",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Garden Design and Installation"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Tropical Landscaping"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Pool Installation and Repair"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Property Maintenance"
+                            }
+                        }
+                    ]
                 }
             }
         </script>
+        {% endif %}
     </head>
     <body>
         <a href="#main-content" class="skip-link">Skip to main content</a>

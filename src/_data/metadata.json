@@ -8,14 +8,16 @@
     "email": "markie@uvita-ojochal.com"
   },
   "social": {
-    "bluesky": "uvita-ojochal.com"
+    "bluesky": "uvita-ojochal.com",
+    "twitter": "@uvitaojochal",
+    "facebook": "https://www.facebook.com/uvitaojochal"
   },
   "seo": {
     "defaultTitle": "Uvita-Ojochal - Costa Rica",
     "titleTemplate": "%s | Uvita-Ojochal",
     "defaultDescription": "Discover the beauty of Costa Rica's southern Pacific coast. Experience Uvita and Ojochal through our eyes - pristine beaches, lush jungles, and vibrant culture.",
     "defaultImage": "/assets/images/ocean_sunset_ventanas.jpg",
-    "defaultKeywords": "Costa Rica, Uvita, Ojochal, Pacific coast, beaches, wildlife, tropical paradise",
+    "defaultKeywords": "Costa Rica, Uvita, Ojochal, Pacific coast, beaches, wildlife, tropical paradise, Costa Rica living, expat life, Costa Rica real estate, Costa Rica tourism",
     "locale": "en_US",
     "type": "website"
   }
