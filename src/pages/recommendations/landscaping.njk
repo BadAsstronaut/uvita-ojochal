@@ -1,9 +1,11 @@
 ---
 layout: base
-title: LANDSCAPING LA COSTA - Premium Garden & Landscape Design in Uvita, Ojochal, Costa Rica
-description: Expert landscaping, garden design, pool installation and property enhancement services in Costa Rica's Southern Zone including Uvita, Ojochal, Dominical, Quepos and Perez Zeledon.
+title: Landscaping La Costa | Premium Garden & Landscape Design in Uvita, Ojochal, Costa Rica
+description: Expert landscaping, garden design, pool installation and property enhancement services in Costa Rica's Southern Zone including Uvita, Ojochal, Dominical, Quepos and Perez Zeledon. Professional groundskeeping and tropical garden design.
+keywords: landscaping costa rica, garden design uvita, groundskeeping ojochal, pool installation dominical, property maintenance zona sur, tropical garden design, landscaping services costa rica, garden construction quepos, landscaping costa ballena, pool repair costa rica, property enhancement uvita, garden designer southern zone, landscape contractor perez zeledon, landscape architect san isidro
 mainContentClass: main-content-recommendations
 locale: en
+permalink: /recommendations/landscaping/
 ---
 
 <div class="hero-carousel">
@@ -13,110 +15,25 @@ locale: en
   </div>
   
   <div class="carousel-container">
-    <!-- Image slides -->
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/infinity_pool_2.jpeg" alt="Beautiful infinity pool overlooking the ocean in Uvita, Costa Rica">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/ocean_view.jpeg" alt="Stunning ocean view property">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/aerial_view.jpeg" alt="Aerial view of landscaped property">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/la_nuestra.jpeg" alt="Beautiful landscaped property">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/plantas.jpeg" alt="Tropical plants and landscaping">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/rock_on.jpeg" alt="Rock landscaping features">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/fixed_pool.jpeg" alt="Beautifully maintained pool">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/mow_time.jpeg" alt="Lawn maintenance and mowing">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/blow_time.jpeg" alt="Property maintenance and cleaning">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/planter.jpeg" alt="Decorative garden planter">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/round_planter.jpeg" alt="Beautiful round garden planter">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/ti_time.jpeg" alt="Ti plant landscaping">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool.jpeg" alt="Infinity pool with ocean view">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool_WIP.jpeg" alt="Infinity pool construction in progress">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool_WIP_2.jpeg" alt="Infinity pool construction phase 2">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool_WIP_3.jpeg" alt="Infinity pool construction phase 3">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/other_pool.jpeg" alt="Another beautifully landscaped pool area">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/ready_to_roof.jpeg" alt="Landscaping preparation for construction">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/la_nuestra_antes.jpeg" alt="Before landscaping work">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/borked_pool.jpeg" alt="Pool before renovation">
-    </div>
-    
-    <!-- Video slides -->
-    <div class="carousel-slide">
-      <video autoplay muted loop playsinline>
-        <source src="/assets/images/landscaping_la_costa/before_after_vid.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="carousel-slide">
-      <video autoplay muted loop playsinline>
-        <source src="/assets/images/landscaping_la_costa/roof_paint.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    {% for slide in landscapingCarousel.slides %}
+      <div class="carousel-slide">
+        {% if slide.type == "image" %}
+          <img src="{{ slide.src }}" alt="{{ slide.alt }}">
+        {% elif slide.type == "video" %}
+          <video autoplay muted loop playsinline>
+            <source src="{{ slide.src }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        {% endif %}
+      </div>
+    {% endfor %}
   </div>
   
   <button class="carousel-btn prev">&lt;</button>
   <button class="carousel-btn next">&gt;</button>
   
   <div class="carousel-nav">
-    <!-- Add a dot for each slide -->
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+    <!-- Navigation dots will be added dynamically via JavaScript -->
   </div>
 </div>
 
@@ -127,19 +44,19 @@ locale: en
       <div class="contact-methods">
         <div class="contact-method">
           <a href="mailto:yander3034@yahoo.es">
-            <i class="contact-icon email-icon"></i>
+            <i data-lucide="mail"></i>
             <span>yander3034@yahoo.es</span>
           </a>
         </div>
         <div class="contact-method">
           <a href="https://wa.me/50687013876">
-            <i class="contact-icon whatsapp-icon"></i>
+            <i data-lucide="message-square"></i>
             <span>WhatsApp: +506 8701 3876</span>
           </a>
         </div>
         <div class="contact-method">
           <a href="https://www.facebook.com/profile.php?id=100092627143854" target="_blank" rel="noopener noreferrer">
-            <i class="contact-icon facebook-icon"></i>
+            <i data-lucide="facebook"></i>
             <span>Find us on Facebook</span>
           </a>
         </div>
@@ -211,4 +128,39 @@ locale: en
   <span>garden designer southern zone</span>
   <span>landscape contractor perez zeledon</span>
   <span>landscape architect san isidro</span>
+  <span>groundskeeping costa rica</span>
+  <span>garden maintenance uvita</span>
+  <span>landscape design ojochal</span>
+  <span>property landscaping dominical</span>
+  <span>tropical landscaping costa rica</span>
+  <span>garden design southern zone</span>
+  <span>landscaping la costa</span>
+  <span>olger landscaper</span>
+  <span>costa rica garden services</span>
+  <span>uvita landscaping</span>
+  <span>ojochal garden design</span>
+  <span>dominical property maintenance</span>
+  <span>quepos landscaping services</span>
+  <span>perez zeledon garden design</span>
+  <span>san isidro landscaping</span>
+  <span>costa ballena garden services</span>
+  <span>southern zone landscaping</span>
+  <span>costa rica property enhancement</span>
+  <span>uvita garden maintenance</span>
+  <span>ojochal property landscaping</span>
+  <span>dominical tropical garden</span>
+  <span>quepos landscape design</span>
+  <span>perez zeledon property maintenance</span>
+  <span>san isidro garden services</span>
+  <span>costa ballena landscaping</span>
+  <span>southern zone garden design</span>
+  <span>costa rica groundskeeping</span>
+  <span>uvita property landscaping</span>
+  <span>ojochal garden maintenance</span>
+  <span>dominical landscaping services</span>
+  <span>quepos garden design</span>
+  <span>perez zeledon landscaping</span>
+  <span>san isidro property maintenance</span>
+  <span>costa ballena garden design</span>
+  <span>southern zone groundskeeping</span>
 </div> 

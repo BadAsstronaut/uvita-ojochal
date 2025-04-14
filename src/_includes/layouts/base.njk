@@ -46,11 +46,26 @@
         rel="manifest" href="/site.webmanifest"> {# Styles #}
         <link
         rel="stylesheet" href="/assets/styles/style.css">
+        {# Lucide Icons #}
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+        <script>
+            window.onload = function() {
+                lucide.createIcons();
+            };
+        </script>
         {# Schema.org Markup #}
         <script type="application/ld+json">
-            { "@context": "https://schema.org", "@type": "WebSite", "name": "{{ metadata.title }}",
-                                                      "url": "{{ metadata.url }}
-            ", "description": "{{ metadata.seo.defaultDescription }} ", "author": { "@type": "Person", "name": "{{ metadata.author.name }} " } }
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "{{ metadata.title }}",
+                "url": "{{ metadata.url }}",
+                "description": "{{ metadata.seo.defaultDescription }}",
+                "author": {
+                    "@type": "Person",
+                    "name": "{{ metadata.author.name }}"
+                }
+            }
         </script>
     </head>
     <body>

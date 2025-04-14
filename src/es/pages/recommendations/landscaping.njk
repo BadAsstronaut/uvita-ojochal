@@ -1,123 +1,39 @@
 ---
 layout: base
-title: LANDSCAPING LA COSTA - Diseño Premium de Jardines y Paisajismo en Uvita, Ojochal, Costa Rica
-description: Servicios expertos de paisajismo, diseño de jardines, instalación de piscinas y mejoras de propiedades en la Zona Sur de Costa Rica, incluyendo Uvita, Ojochal, Dominical, Quepos y Pérez Zeledón.
+title: Landscaping La Costa | Diseño de Jardines y Paisajismo Premium en Uvita, Ojochal, Costa Rica
+description: Servicios expertos de paisajismo, diseño de jardines, instalación de piscinas y mejora de propiedades en la Zona Sur de Costa Rica, incluyendo Uvita, Ojochal, Dominical, Quepos y Pérez Zeledón. Mantenimiento profesional de jardines y diseño de jardines tropicales.
+keywords: paisajismo costa rica, diseño de jardines uvita, mantenimiento de jardines ojochal, instalación de piscinas dominical, mantenimiento de propiedades zona sur, diseño de jardines tropicales, servicios de paisajismo costa rica, construcción de jardines quepos, paisajismo costa ballena, reparación de piscinas costa rica, mejora de propiedades uvita, diseñador de jardines zona sur, contratista de paisajismo perez zeledon, arquitecto paisajista san isidro
 mainContentClass: main-content-recommendations
 locale: es
-permalink: /es/pages/recommendations/landscaping/
+permalink: /es/recomendaciones/paisajismo/
 ---
 
 <div class="hero-carousel">
   <div class="carousel-overlay">
     <h1 class="carousel-title">Landscaping La Costa</h1>
-    <p class="carousel-subtitle">Donde la Visión se Encuentra con la Belleza Costarricense</p>
+    <p class="carousel-subtitle">Donde la Visión se Encuentra con la Belleza de Costa Rica</p>
   </div>
   
   <div class="carousel-container">
-    <!-- Image slides -->
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/infinity_pool_2.jpeg" alt="Hermosa piscina infinita con vista al océano en Uvita, Costa Rica">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/ocean_view.jpeg" alt="Impresionante propiedad con vista al mar">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/aerial_view.jpeg" alt="Vista aérea de propiedad paisajística">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/la_nuestra.jpeg" alt="Hermosa propiedad ajardinada">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/plantas.jpeg" alt="Plantas tropicales y paisajismo">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/rock_on.jpeg" alt="Características de paisajismo con rocas">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/fixed_pool.jpeg" alt="Piscina perfectamente mantenida">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/mow_time.jpeg" alt="Mantenimiento y corte de césped">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/blow_time.jpeg" alt="Mantenimiento y limpieza de propiedades">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/planter.jpeg" alt="Macetero decorativo para jardín">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/round_planter.jpeg" alt="Hermoso macetero redondo para jardín">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/ti_time.jpeg" alt="Paisajismo con plantas Ti">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool.jpeg" alt="Piscina infinita con vista al océano">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool_WIP.jpeg" alt="Construcción de piscina infinita en progreso">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool_WIP_2.jpeg" alt="Construcción de piscina infinita fase 2">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/inifity_pool_WIP_3.jpeg" alt="Construcción de piscina infinita fase 3">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/other_pool.jpeg" alt="Otra área de piscina bellamente ajardinada">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/ready_to_roof.jpeg" alt="Preparación de paisajismo para construcción">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/la_nuestra_antes.jpeg" alt="Antes del trabajo de paisajismo">
-    </div>
-    <div class="carousel-slide">
-      <img src="/assets/images/landscaping_la_costa/borked_pool.jpeg" alt="Piscina antes de la renovación">
-    </div>
-    
-    <!-- Video slides -->
-    <div class="carousel-slide">
-      <video autoplay muted loop playsinline>
-        <source src="/assets/images/landscaping_la_costa/before_after_vid.mp4" type="video/mp4">
-        Su navegador no soporta la etiqueta de vídeo.
-      </video>
-    </div>
-    <div class="carousel-slide">
-      <video autoplay muted loop playsinline>
-        <source src="/assets/images/landscaping_la_costa/roof_paint.mp4" type="video/mp4">
-        Su navegador no soporta la etiqueta de vídeo.
-      </video>
-    </div>
+    {% for slide in landscapingCarousel.slides %}
+      <div class="carousel-slide">
+        {% if slide.type == "image" %}
+          <img src="{{ slide.src }}" alt="{{ slide.alt }}">
+        {% elif slide.type == "video" %}
+          <video autoplay muted loop playsinline>
+            <source src="{{ slide.src }}" type="video/mp4">
+            Su navegador no soporta el elemento de video.
+          </video>
+        {% endif %}
+      </div>
+    {% endfor %}
   </div>
   
   <button class="carousel-btn prev">&lt;</button>
   <button class="carousel-btn next">&gt;</button>
   
   <div class="carousel-nav">
-    <!-- Add a dot for each slide -->
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+    <!-- Los puntos de navegación se agregarán dinámicamente mediante JavaScript -->
   </div>
 </div>
 
@@ -128,19 +44,19 @@ permalink: /es/pages/recommendations/landscaping/
       <div class="contact-methods">
         <div class="contact-method">
           <a href="mailto:yander3034@yahoo.es">
-            <i class="contact-icon email-icon"></i>
+            <i data-lucide="mail"></i>
             <span>yander3034@yahoo.es</span>
           </a>
         </div>
         <div class="contact-method">
           <a href="https://wa.me/50687013876">
-            <i class="contact-icon whatsapp-icon"></i>
+            <i data-lucide="message-square"></i>
             <span>WhatsApp: +506 8701 3876</span>
           </a>
         </div>
         <div class="contact-method">
           <a href="https://www.facebook.com/profile.php?id=100092627143854" target="_blank" rel="noopener noreferrer">
-            <i class="contact-icon facebook-icon"></i>
+            <i data-lucide="facebook"></i>
             <span>Encuéntranos en Facebook</span>
           </a>
         </div>
@@ -154,19 +70,19 @@ permalink: /es/pages/recommendations/landscaping/
     <div class="recommendations-content">
       <h1 class="page-title">LANDSCAPING LA COSTA</h1>
       <div class="recommendations-text">
-        <p>En la Zona Sur de Costa Rica, existe un maestro artesano que habla a través del lenguaje de las plantas y estructuras. Olger, el visionario detrás de LANDSCAPING LA COSTA, transforma espacios ordinarios en extraordinarios santuarios naturales.</p>
+        <p>En la Zona Sur de Costa Rica, existe un maestro artesano que se expresa a través del lenguaje de las plantas y las estructuras. Olger, el visionario detrás de LANDSCAPING LA COSTA, transforma espacios ordinarios en extraordinarios santuarios naturales.</p>
         
-        <p>A diferencia de los paisajistas convencionales, Olger no solo planta jardines—crea arte vivo que honra la impresionante belleza de Costa Rica. Su enfoque único combina elementos naturalistas con diseños cuidadosamente elaborados, permitiendo que el esplendor inherente del paisaje brille por sí mismo.</p>
+        <p>A diferencia de los paisajistas convencionales, Olger no solo planta jardines, sino que crea arte viviente que honra la impresionante belleza de Costa Rica. Su enfoque único combina elementos naturalistas con diseños cuidadosamente manicurados, permitiendo que el esplendor inherente del paisaje brille a través.</p>
         
         <div class="recommendation-item">
           <h2>Más Allá del Paisajismo Tradicional</h2>
-          <p>Lo que distingue a LANDSCAPING LA COSTA es la amplia experiencia de Olger. Donde otros podrían limitar sus servicios, Olger abraza sin miedo todos los aspectos de la mejora de propiedades:</p>
+          <p>Lo que distingue a LANDSCAPING LA COSTA es la experiencia integral de Olger. Donde otros podrían limitar sus servicios, Olger abraza sin temor cada aspecto de la mejora de propiedades:</p>
           
           <ul>
             <li>Diseño e instalación artística de jardines</li>
             <li>Paisajismo tropical y mantenimiento de jardines</li>
             <li>Construcción de terrazas y puentes</li>
-            <li>Instalación, renovación y reparación de piscinas</li>
+            <li>Instalación, resaneo y reparación de piscinas</li>
             <li>Creación de estanques</li>
             <li>Pintura de techos</li>
             <li>Poda y eliminación de árboles</li>
@@ -174,17 +90,17 @@ permalink: /es/pages/recommendations/landscaping/
             <li>Transformaciones completas de propiedades</li>
           </ul>
           
-          <p>Cada proyecto se convierte en un lienzo donde la profunda conexión de Olger con la naturaleza costarricense encuentra expresión a través de la colocación cuidadosa de plantas, construcción estratégica y diseño armonioso.</p>
+          <p>Cada proyecto se convierte en un lienzo donde la profunda conexión de Olger con la naturaleza costarricense encuentra expresión a través de la colocación cuidadosa de plantas, la construcción estratégica y el diseño armonioso.</p>
           
           <h2>El Toque del Artista</h2>
-          <p>Algunos crean obras maestras con pintura o arcilla—Olger elabora las suyas con plantas vivas y elementos estructurales. Su trabajo refleja un profundo entendimiento del ecosistema único de la Zona Sur, incorporando plantas autóctonas y prácticas sostenibles que realzan en lugar de competir con el entorno natural.</p>
+          <p>Algunos crean obras maestras con pintura o arcilla, Olger crea las suyas con plantas vivas y elementos estructurales. Su trabajo refleja una profunda comprensión del ecosistema único de la Zona Sur, incorporando plantas indígenas y prácticas sostenibles que mejoran en lugar de competir con el entorno natural.</p>
           
-          <p>Cuando eliges LANDSCAPING LA COSTA, no estás simplemente contratando un servicio; estás comisionando a un artista cuyo medio es el paisaje costarricense mismo.</p>
+          <p>Cuando eliges LANDSCAPING LA COSTA, no estás simplemente contratando un servicio; estás encargando a un artista cuyo medio es el paisaje costarricense en sí mismo.</p>
           
           <p>Para aquellos que buscan mejorar su propiedad con auténtico carácter costarricense y artesanía sin igual, LANDSCAPING LA COSTA representa el pináculo del arte natural en la Zona Sur.</p>
           
           <h2>Áreas de Servicio</h2>
-          <p>LANDSCAPING LA COSTA atiende con orgullo propiedades en toda la Zona Sur de Costa Rica, incluyendo Uvita, Ojochal, Dominical, Quepos, Pérez Zeledón, San Isidro de General y áreas circundantes.</p>
+          <p>LANDSCAPING LA COSTA sirve con orgullo a propiedades en toda la Zona Sur de Costa Rica, incluyendo Uvita, Ojochal, Dominical, Quepos, Pérez Zeledón, San Isidro de El General y áreas circundantes.</p>
           
           <h2>Información de Contacto</h2>
           <p>Correo electrónico: <a href="mailto:yander3034@yahoo.es">yander3034@yahoo.es</a></p>
@@ -199,17 +115,52 @@ permalink: /es/pages/recommendations/landscaping/
 <!-- SEO metadata -->
 <div class="seo-metadata" style="display:none;">
   <span>diseño de paisaje costa rica</span>
-  <span>servicios de jardinería uvita</span>
+  <span>servicios de jardín uvita</span>
   <span>instalación de piscinas ojochal</span>
   <span>mantenimiento de propiedades zona sur</span>
   <span>paisajista dominical</span>
-  <span>diseño de jardín tropical</span>
+  <span>diseño de jardines tropicales</span>
   <span>servicios de paisajismo costa rica</span>
   <span>construcción de jardines quepos</span>
   <span>paisajismo costa ballena</span>
   <span>reparación de piscinas costa rica</span>
   <span>mejora de propiedades uvita</span>
   <span>diseñador de jardines zona sur</span>
-  <span>contratista de paisajismo pérez zeledón</span>
+  <span>contratista de paisajismo perez zeledon</span>
   <span>arquitecto paisajista san isidro</span>
+  <span>mantenimiento de jardines costa rica</span>
+  <span>mantenimiento de jardines uvita</span>
+  <span>diseño de paisaje ojochal</span>
+  <span>paisajismo de propiedades dominical</span>
+  <span>paisajismo tropical costa rica</span>
+  <span>diseño de jardines zona sur</span>
+  <span>landscaping la costa</span>
+  <span>olger paisajista</span>
+  <span>servicios de jardín costa rica</span>
+  <span>paisajismo uvita</span>
+  <span>diseño de jardines ojochal</span>
+  <span>mantenimiento de propiedades dominical</span>
+  <span>servicios de paisajismo quepos</span>
+  <span>diseño de jardines perez zeledon</span>
+  <span>paisajismo san isidro</span>
+  <span>servicios de jardín costa ballena</span>
+  <span>paisajismo zona sur</span>
+  <span>mejora de propiedades costa rica</span>
+  <span>mantenimiento de jardines uvita</span>
+  <span>paisajismo de propiedades ojochal</span>
+  <span>jardín tropical dominical</span>
+  <span>diseño de paisaje quepos</span>
+  <span>mantenimiento de propiedades perez zeledon</span>
+  <span>servicios de jardín san isidro</span>
+  <span>paisajismo costa ballena</span>
+  <span>diseño de jardines zona sur</span>
+  <span>mantenimiento de jardines costa rica</span>
+  <span>paisajismo de propiedades uvita</span>
+  <span>mantenimiento de jardines ojochal</span>
+  <span>servicios de paisajismo dominical</span>
+  <span>diseño de jardines quepos</span>
+  <span>paisajismo perez zeledon</span>
+  <span>mantenimiento de propiedades san isidro</span>
+  <span>diseño de jardines costa ballena</span>
+  <span>mantenimiento de jardines zona sur</span>
 </div> 

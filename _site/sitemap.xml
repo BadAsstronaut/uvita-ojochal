@@ -79,6 +79,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://uvita-ojochal.com/assets/styles/_recommendations.css</loc>
+        <lastmod>2025-04-14T14:49:25.243Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://uvita-ojochal.com/</loc>
         <lastmod>2025-04-13T21:19:40.620Z</lastmod>
         <changefreq>monthly</changefreq>
@@ -139,13 +145,13 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/pages/recommendations/landscaping/</loc>
+        <loc>https://uvita-ojochal.com/recommendations/landscaping/</loc>
         <lastmod>2025-04-13T22:38:17.686Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/pages/recommendations/landscaping/</loc>
+        <loc>https://uvita-ojochal.com/es/recomendaciones/paisajismo/</loc>
         <lastmod>2025-04-13T22:38:29.639Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
