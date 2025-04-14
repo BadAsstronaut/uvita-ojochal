@@ -4,6 +4,7 @@ const navPlugin = require('@11ty/eleventy-navigation');
 const { eleventyImageTransformPlugin } = require('@11ty/eleventy-img');
 const fs = require('fs');
 
+// Updated image configuration with explicit output directory and better order handling
 const imageConfig = {
     extensions: "html",
     formats: ["webp"],
@@ -14,11 +15,18 @@ const imageConfig = {
         sizes: "100vw",
     },
     urlPath: "/images/",
+    outputDir: "./_site/images/", // Use _site instead of dist
+    useCache: true,
+    svgShortCircuit: false, // Don't skip SVG processing
+    dryRun: false, // Make sure processing happens
+    transformOnBuild: true, // Force transform during build
 };
 
 module.exports = function (eleventyConfig) {
     // Add plugins
     eleventyConfig.addPlugin(navPlugin);
+    
+    // Set up image processing first before other processes
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, imageConfig);
 
     // Sitemap Configuration
@@ -95,6 +103,12 @@ module.exports = function (eleventyConfig) {
         }
     });
 
+    // Add ensureRootPath filter
+    eleventyConfig.addFilter('ensureRootPath', (path) => {
+        if (!path) return '';
+        return path.startsWith('/') ? path : `/${path}`;
+    });
+
     // Add shortcodes
     eleventyConfig.addShortcode("currentYear", () => `${new Date().getFullYear()}`);
 
@@ -138,12 +152,12 @@ module.exports = function (eleventyConfig) {
     });
 
     // Copy static assets
-    eleventyConfig.addPassthroughCopy("src/assets/images");
-    eleventyConfig.addPassthroughCopy("src/assets/js");
-    eleventyConfig.addPassthroughCopy("src/assets/fonts");
-    eleventyConfig.addPassthroughCopy("src/site.webmanifest");
-    eleventyConfig.addPassthroughCopy("src/robots.txt");
-
+    eleventyConfig.addPassthroughCopy({ "src/assets/images": "assets/images" });
+    eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });
+    eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts" });
+    eleventyConfig.addPassthroughCopy({ "src/site.webmanifest": "site.webmanifest" });
+    eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
+    
     // Watch targets
     eleventyConfig.addWatchTarget("./src/assets/js/");
 
@@ -151,7 +165,7 @@ module.exports = function (eleventyConfig) {
     return {
         dir: {
             input: "src",
-            output: "_site",
+            output: "_site", // Use _site instead of dist
             includes: "_includes",
             layouts: "_includes/layouts",
             data: "_data"

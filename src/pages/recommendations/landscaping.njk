@@ -18,10 +18,10 @@ permalink: /recommendations/landscaping/
     {% for slide in landscapingCarousel.slides %}
       <div class="carousel-slide">
         {% if slide.type == "image" %}
-          <img src="{{ slide.src }}" alt="{{ slide.alt }}">
+          <img src="{{ slide.src | url }}" alt="{{ slide.alt }}" loading="lazy" decoding="async">
         {% elif slide.type == "video" %}
           <video autoplay muted loop playsinline>
-            <source src="{{ slide.src }}" type="video/mp4">
+            <source src="{{ slide.src | url }}" type="video/mp4">
             Your browser does not support the video element.
           </video>
         {% endif %}

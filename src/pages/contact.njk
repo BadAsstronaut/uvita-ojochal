@@ -4,6 +4,7 @@ title: Contact Us
 description: Get in touch with us about Uvita and Ojochal properties and experiences
 mainContentClass: contact-page
 locale: en
+permalink: /contact/
 ---
 
 <section class="section" aria-labelledby="contact-heading">
@@ -13,7 +14,7 @@ locale: en
             we'll get back to you soon.</p>
         <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="34ec1e52-4e0c-421d-b8dc-267af0f54907"/>
-            <input type="hidden" name="redirect" value="{{ metadata.url }}pages/contact/success"/>
+            <input type="hidden" name="redirect" value="{{ metadata.url }}contact/success"/>
             <div class="form-group">
                 <label for="name" class="required">{{ translations.en.contact.form.name }}</label>
                 <input

@@ -97,43 +97,43 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/pages/about/</loc>
+        <loc>https://uvita-ojochal.com/about/</loc>
         <lastmod>2025-02-08T20:09:10.238Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/pages/contact/</loc>
+        <loc>https://uvita-ojochal.com/contact/</loc>
         <lastmod>2025-02-09T01:18:02.238Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/pages/recommendations/</loc>
+        <loc>https://uvita-ojochal.com/recommendations/</loc>
         <lastmod>2025-04-13T22:35:55.870Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/pages/about/</loc>
+        <loc>https://uvita-ojochal.com/es/nosotros/</loc>
         <lastmod>2025-04-13T21:28:59.401Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/pages/contact/</loc>
+        <loc>https://uvita-ojochal.com/es/contacto/</loc>
         <lastmod>2025-04-13T21:29:15.855Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/pages/recommendations/</loc>
+        <loc>https://uvita-ojochal.com/es/recomendaciones/</loc>
         <lastmod>2025-04-13T22:36:04.100Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/pages/contact/success/</loc>
+        <loc>https://uvita-ojochal.com/contact/success/</loc>
         <lastmod>2025-02-09T04:00:16.742Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -145,14 +145,14 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/pages/contact/success/</loc>
-        <lastmod>2025-04-13T21:31:33.181Z</lastmod>
+        <loc>https://uvita-ojochal.com/es/recomendaciones/paisajismo/</loc>
+        <lastmod>2025-04-13T22:38:29.639Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/recomendaciones/paisajismo/</loc>
-        <lastmod>2025-04-13T22:38:29.639Z</lastmod>
+        <loc>https://uvita-ojochal.com/es/contacto/exito/</loc>
+        <lastmod>2025-04-13T21:31:33.181Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

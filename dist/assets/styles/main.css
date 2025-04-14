@@ -1,0 +1,401 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #2C3E50;
+  background-color: #F9F7F3;
+}
+
+p {
+  margin-bottom: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nature Spirit", Georgia, serif;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #264653;
+}
+
+h1 {
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-size: 3.6rem;
+}
+
+h3 {
+  font-size: 2.8rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+img {
+  opacity: 0;
+  animation: fadeInImage 0.3s ease-out forwards;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2A9D8F;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+:focus {
+  outline: 3px solid #2A9D8F;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid #2A9D8F;
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact-page {
+  background-color: #F9F7F3;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+.contact-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2A9D8F;
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: 1.8rem;
+  color: #2C3E50;
+}
+
+.contact-form {
+  background: white;
+  padding: 4rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+.contact-form .form-group {
+  margin-bottom: 2.5rem;
+}
+.contact-form .form-group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  color: #2C3E50;
+}
+.contact-form .form-group label.required::after {
+  content: " *";
+  color: #E76F51;
+}
+.contact-form .form-group .form-control {
+  width: 100%;
+  padding: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  transition: border-color 0.3s ease;
+}
+.contact-form .form-group .form-control:focus-visible {
+  outline: 3px solid #2A9D8F;
+  outline-offset: 0;
+  border-color: #2A9D8F;
+}
+.contact-form .form-group .form-control:invalid:not(:placeholder-shown) {
+  border-color: #E76F51;
+}
+.contact-form .form-group .form-control[aria-invalid=true] {
+  border-color: #E76F51;
+}
+.contact-form .form-group textarea.form-control {
+  resize: vertical;
+  min-height: 15rem;
+}
+.contact-form .btn-primary {
+  background-color: #2A9D8F;
+  color: white;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contact-form .btn-primary:hover {
+  background-color: rgb(31.2361809045, 116.7638190955, 106.351758794);
+}
+.contact-form .btn-primary:focus-visible {
+  outline: 3px solid #2A9D8F;
+  outline-offset: 2px;
+}
+
+.error-message {
+  color: #E76F51;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+.error-message.visible {
+  display: block;
+}
+
+.main-content-recommendations {
+  background: url("/assets/images/into_the_jungle.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.recommendations-section {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+.recommendations-section .page-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: 3.6rem;
+  color: #264653;
+}
+
+.recommendations-content {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  padding: 4rem 2rem;
+}
+.recommendations-content .recommendations-text {
+  padding: 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.recommendations-content .recommendations-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #2C3E50;
+  font-size: 1.5rem;
+}
+.recommendations-content .recommendations-text h2 {
+  color: #264653;
+  margin: 2rem 0 1.5rem;
+  font-size: 2.4rem;
+}
+.recommendations-content .recommendations-text h3 {
+  color: #264653;
+  margin: 2rem 0 1rem;
+  font-size: 2rem;
+}
+.recommendations-content .recommendations-text ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+}
+.recommendations-content .recommendations-text ul li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.6;
+  font-size: 1.5rem;
+}
+.recommendations-content .recommendations-text ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #2A9D8F;
+  font-weight: bold;
+}
+.recommendations-content .recommendations-text .recommendation-item {
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: rgba(42, 157, 143, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #2A9D8F;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, #2A9D8F, rgb(25.8542713568, 96.6457286432, 88.027638191));
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  margin: 3rem auto;
+  max-width: 120rem;
+  padding: 3rem;
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+.contact-card .contact-card-content {
+  text-align: center;
+}
+.contact-card .contact-card-content h2 {
+  color: white;
+  margin-bottom: 2.5rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.contact-card .contact-card-content .contact-methods {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .contact-card .contact-card-content .contact-methods {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+.contact-card .contact-card-content .contact-methods .contact-method {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+}
+.contact-card .contact-card-content .contact-methods .contact-method a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+.contact-card .contact-card-content .contact-methods .contact-method a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.03);
+}
+.contact-card .contact-card-content .contact-methods .contact-method a svg,
+.contact-card .contact-card-content .contact-methods .contact-method a i[data-lucide] {
+  width: 28px;
+  height: 28px;
+  stroke: white;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.section {
+  padding: 8rem 2rem;
+  max-width: 120rem;
+  min-height: calc(100vh - 8rem);
+  margin: 0 auto;
+  padding-top: 13rem;
+}
+.section.alternate {
+  background-color: white;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card img {
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+}
+.card .card-content {
+  padding: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 3rem;
+}
+
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+}

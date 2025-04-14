@@ -1,10 +1,19 @@
 .PHONY: build
 build: node_install
-	@npx @11ty/eleventy --input=src --output=dist
+	@npx @11ty/eleventy --input=src --output=_site
+
+.PHONY: static
+static: clean build
+	@python3 -m http.server 8081 --bind 127.0.0.1 --directory ./_site
 
 .PHONY: run
 run: node_install
 	@npx @11ty/eleventy --input=src --serve
+
+.PHONY: clean
+clean:
+	@echo "> Cleaning build directories..."
+	@rm -rf _site
 
 .PHONY: node_install
 node_install: formula := node

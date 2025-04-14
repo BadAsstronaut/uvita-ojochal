@@ -1,7 +1,7 @@
 <header class="site-header" role="banner">
   <div class="header-container">
     <a href="{% if locale == 'en' %}/{% else %}/{{ locale }}/{% endif %}" class="logo" aria-label="Uvita-Ojochal">
-      <img src="/assets/images/uvita-ojochal-logo-light.png" alt="Uvita-Ojochal Logo"></a>
+      <img src="{{ '/assets/images/uvita-ojochal-logo-light.png' | url }}" alt="Uvita-Ojochal Logo"></a>
       <div class="language-selector">
         <fieldset>
           <legend>{{ translations[locale].language }}</legend>
@@ -22,9 +22,9 @@
           </button>
           <nav class="primary-nav nav-links" role="navigation">
             <ul>
-              <li><a href="{% if locale == 'en' %}/pages/about{% else %}/{{ locale }}/pages/about{% endif %}">{{ translations[locale].nav.about }}</a></li>
-              <li><a href="{% if locale == 'en' %}/pages/contact{% else %}/{{ locale }}/pages/contact{% endif %}">{{ translations[locale].nav.contact }}</a></li>
-              <li><a href="{% if locale == 'en' %}/pages/recommendations{% else %}/{{ locale }}/pages/recommendations{% endif %}">{{ translations[locale].nav.recommendations }}</a></li>
+              <li><a href="{% if locale == 'en' %}/about{% else %}/{{ locale }}/nosotros{% endif %}">{{ translations[locale].nav.about }}</a></li>
+              <li><a href="{% if locale == 'en' %}/contact{% else %}/{{ locale }}/contacto{% endif %}">{{ translations[locale].nav.contact }}</a></li>
+              <li><a href="{% if locale == 'en' %}/recommendations{% else %}/{{ locale }}/recomendaciones{% endif %}">{{ translations[locale].nav.recommendations }}</a></li>
             </ul>
           </nav>
         </div>
