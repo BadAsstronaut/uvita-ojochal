@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.primary-nav ul');
+    const languageSelector = document.querySelector('.language-selector');
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
@@ -24,7 +25,60 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.classList.toggle('active');
             menuToggle.setAttribute('aria-expanded',
                 menuToggle.classList.contains('active').toString());
+
+            // On mobile, hide the language selector when menu is open
+            if (window.innerWidth <= 768) { // Assuming $breakpoint-mobile is 768px
+                if (languageSelector) {
+                    languageSelector.classList.toggle('hidden', menuToggle.classList.contains('active'));
+                }
+            }
         });
+    }
+
+    // Language selector functionality - works for both mobile and desktop selectors
+    const languageRadios = document.querySelectorAll('.language-selector input[type="radio"]');
+
+    if (languageRadios.length) {
+        languageRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const newLocale = e.target.value;
+                const currentPath = window.location.pathname;
+
+                // Store the selected language in localStorage
+                localStorage.setItem('preferredLanguage', newLocale);
+
+                // Redirect to the same page with the new locale
+                const newUrl = getLocalizedUrl(currentPath, newLocale);
+                window.location.href = newUrl;
+            });
+        });
+
+        // Apply preferred language from localStorage on page load
+        const storedLang = localStorage.getItem('preferredLanguage');
+        if (storedLang) {
+            const currentLang = document.documentElement.lang;
+
+            // Only redirect if the stored language is different from current
+            if (storedLang !== currentLang) {
+                const currentPath = window.location.pathname;
+                const newUrl = getLocalizedUrl(currentPath, storedLang);
+                window.location.href = newUrl;
+            }
+        }
+    }
+
+    // Helper function to get localized URL
+    function getLocalizedUrl(path, locale) {
+        // Remove any existing locale prefix
+        let cleanPath = path.replace(/^\/(en|es)\//, '/');
+
+        // Handle root path special case
+        if (cleanPath === '/' || cleanPath === '') {
+            return locale === 'en' ? '/' : `/${locale}/`;
+        }
+
+        // Add locale prefix for non-English
+        return locale === 'en' ? cleanPath : `/${locale}${cleanPath}`;
     }
 
     // Intersection Observer for fade-in animations

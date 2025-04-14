@@ -3,18 +3,19 @@ layout: base
 title: Contact Us
 description: Get in touch with us about Uvita and Ojochal properties and experiences
 mainContentClass: contact-page
+locale: en
 ---
 
 <section class="section" aria-labelledby="contact-heading">
     <div class="contact-container">
-        <h1 id="contact-heading">Contact Us</h1>
+        <h1 id="contact-heading">{{ translations.en.contact.title }}</h1>
         <p class="contact-intro">Have questions about Uvita or Ojochal? We'd love to hear from you! Fill out the form below and
             we'll get back to you soon.</p>
         <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="34ec1e52-4e0c-421d-b8dc-267af0f54907"/>
             <input type="hidden" name="redirect" value="{{ metadata.url }}pages/contact/success"/>
             <div class="form-group">
-                <label for="name" class="required">Name</label>
+                <label for="name" class="required">{{ translations.en.contact.form.name }}</label>
                 <input
                     type="text"
                     id="name"
@@ -26,7 +27,7 @@ mainContentClass: contact-page
                     autocomplete="name">
             </div>
             <div class="form-group">
-                <label for="email" class="required">Email</label>
+                <label for="email" class="required">{{ translations.en.contact.form.email }}</label>
                 <input
                     type="email"
                     id="email"
@@ -38,7 +39,7 @@ mainContentClass: contact-page
                     autocomplete="email">
             </div>
             <div class="form-group">
-                <label for="message" class="required">Message</label>
+                <label for="message" class="required">{{ translations.en.contact.form.message }}</label>
                 <textarea
                     id="message"
                     name="message"
@@ -51,7 +52,7 @@ mainContentClass: contact-page
             <div class="visually-hidden">
                 <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary">{{ translations.en.contact.form.submit }}</button>
         </form>
     </div>
 </section>

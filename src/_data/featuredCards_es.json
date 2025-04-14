@@ -1,0 +1,19 @@
+{
+    "cards": [
+        {
+            "title": "Biodiversidad",
+            "image": "/assets/images/monkey_1.jpg",
+            "description": "Costa Rica, y la provincia de Puntarenas en particular, atrae a ecoturistas, biólogos, botánicos -- este lugar es un paraíso para los naturalistas."
+        },
+        {
+            "title": "Actividades y Aventuras",
+            "image": "/assets/images/ocean_sunset_ventanas.jpg",
+            "description": "Desde surf y senderismo hasta rappel en cascadas, descubre posibilidades infinitas para la aventura."
+        },
+        {
+            "title": "Vida Tranquila",
+            "image": "/assets/images/chill_crane.jpg",
+            "description": "Abraza el estilo de vida Pura Vida en nuestras vibrantes comunidades, donde la naturaleza y la comodidad moderna coexisten."
+        }
+    ]
+}

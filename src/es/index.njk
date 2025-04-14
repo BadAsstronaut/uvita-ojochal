@@ -1,0 +1,55 @@
+---
+layout: base
+title: Bienvenido al Paraíso - Uvita y Ojochal, Costa Rica
+description: Descubre la belleza natural y el estilo de vida vibrante de Uvita y Ojochal, Costa Rica. Tu guía para playas, vida silvestre y vida sostenible en la costa pacífica sur de Costa Rica.
+locale: es
+permalink: /es/
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>{{ translations.es.home.hero.title }}</h1>
+        <p>{{ translations.es.home.hero.subtitle }}</p>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h2>{{ translations.es.home.welcome }}</h2>
+        <div class="grid">
+            {% for card in featuredCards_es.cards %}
+                <div class="card hover-lift">
+                    {% if card.image %}
+                        <img src="{{ card.image }}" alt="{{ card.title }}" loading="lazy">
+                        {% endif %}
+                        <div class="card-content">
+                            <h3>{{ card.title }}</h3>
+                            <p>{{ card.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {# Latest stories section - currently disabled
+      {% if collections.posts_es %}
+        <section class="section alternate">
+          <div class="container">
+            <h2>{{ translations.es.home.latestStories }}</h2>
+            <div class="grid">
+              {% for post in collections.posts_es | reverse | limit(3) %}
+                <div class="card">
+                  {% if post.data.image %}
+                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+                  {% endif %}
+                  <div class="card-content">
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.description }}</p>
+                    <a href="{{ post.url }}" class="button">{{ translations.es.home.readMore }}</a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+      {% endif %}
+    #}

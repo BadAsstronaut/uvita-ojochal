@@ -1,0 +1,78 @@
+{
+    "en": {
+        "nav": {
+            "about": "About Us",
+            "contact": "Contact",
+            "recommendations": "Recommendations"
+        },
+        "language": "Language",
+        "home": {
+            "hero": {
+                "title": "Discover Paradise in Uvita & Ojochal",
+                "subtitle": "Where the rainforest meets the Pacific, and adventure awaits around every corner"
+            },
+            "welcome": "Welcome to Costa Rica's Hidden Gem",
+            "latestStories": "Latest Stories",
+            "readMore": "Read More"
+        },
+        "about": {
+            "title": "About Us",
+            "subtitle": "Our Journey to Pura Vida",
+            "story": "Our Story",
+            "vision": "Our Vision"
+        },
+        "contact": {
+            "title": "Contact Us",
+            "subtitle": "Get in Touch",
+            "form": {
+                "name": "Your Name",
+                "email": "Email Address",
+                "message": "Your Message",
+                "submit": "Send Message"
+            }
+        },
+        "footer": {
+            "subscribe": "Subscribe to Updates",
+            "followUs": "Follow Us",
+            "copyright": "All Rights Reserved"
+        }
+    },
+    "es": {
+        "nav": {
+            "about": "Quiénes Somos",
+            "contact": "Contacto",
+            "recommendations": "Recomendaciones"
+        },
+        "language": "Idioma",
+        "home": {
+            "hero": {
+                "title": "Descubre el Paraíso en Uvita y Ojochal",
+                "subtitle": "Donde la selva tropical se encuentra con el Pacífico, y la aventura espera en cada rincón"
+            },
+            "welcome": "Bienvenido a la Joya Escondida de Costa Rica",
+            "latestStories": "Últimas Historias",
+            "readMore": "Leer Más"
+        },
+        "about": {
+            "title": "Quiénes Somos",
+            "subtitle": "Nuestro Viaje hacia la Pura Vida",
+            "story": "Nuestra Historia",
+            "vision": "Nuestra Visión"
+        },
+        "contact": {
+            "title": "Contáctanos",
+            "subtitle": "Ponte en Contacto",
+            "form": {
+                "name": "Tu Nombre",
+                "email": "Correo Electrónico",
+                "message": "Tu Mensaje",
+                "submit": "Enviar Mensaje"
+            }
+        },
+        "footer": {
+            "subscribe": "Suscríbete a Actualizaciones",
+            "followUs": "Síguenos",
+            "copyright": "Todos los Derechos Reservados"
+        }
+    }
+}

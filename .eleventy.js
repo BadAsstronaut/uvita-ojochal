@@ -44,6 +44,17 @@ module.exports = function (eleventyConfig) {
         });
     });
 
+    // Add language-specific collections
+    eleventyConfig.addCollection("posts_en", function (collectionApi) {
+        return collectionApi.getFilteredByGlob("src/posts/*.md")
+            .filter(item => !item.data.locale || item.data.locale === "en");
+    });
+
+    eleventyConfig.addCollection("posts_es", function (collectionApi) {
+        return collectionApi.getFilteredByGlob("src/posts/*.md")
+            .filter(item => item.data.locale === "es");
+    });
+
     // Add filters
     eleventyConfig.addFilter("limit", function (arr, limit) {
         return arr.slice(0, limit);

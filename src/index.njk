@@ -2,52 +2,53 @@
 layout: base
 title: Welcome to Paradise - Uvita & Ojochal, Costa Rica
 description: Discover the natural beauty and vibrant lifestyle of Uvita and Ojochal, Costa Rica. Your guide to beaches, wildlife, and sustainable living in Costa Rica's southern Pacific coast.
+locale: en
 ---
 
 <section class="hero">
-    <div class="hero-content">
-        <h1>Discover Paradise in Uvita & Ojochal</h1>
-        <p>Where the rainforest meets the Pacific, and adventure awaits around every corner</p>
-    </div>
+  <div class="hero-content">
+    <h1>{{ translations.en.home.hero.title }}</h1>
+    <p>{{ translations.en.home.hero.subtitle }}</p>
+  </div>
 </section>
-
 <section class="section">
-    <div class="container">
-        <h2>Welcome to Costa Rica's Hidden Gem</h2>
-        <div class="grid">
-            {% for card in featuredCards.cards %}
-            <div class="card hover-lift">
-                {% if card.image %}
-                <img src="{{ card.image }}" alt="{{ card.title }}" loading="lazy">
-                {% endif %}
-                <div class="card-content">
-                    <h3>{{ card.title }}</h3>
-                    <p>{{ card.description }}</p>
-                </div>
+  <div class="container">
+    <h2>{{ translations.en.home.welcome }}</h2>
+    <div class="grid">
+      {% for card in featuredCards.cards %}
+        <div class="card hover-lift">
+          {% if card.image %}
+            <img src="{{ card.image }}" alt="{{ card.title }}" loading="lazy">
+            {% endif %}
+            <div class="card-content">
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.description }}</p>
             </div>
-            {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-</section>
-
-{% if collections.posts %}
-<section class="section alternate">
-    <div class="container">
-        <h2>Latest Stories</h2>
-        <div class="grid">
-            {% for post in collections.posts | reverse | limit(3) %}
-            <div class="card">
-                {% if post.data.image %}
-                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
-                {% endif %}
-                <div class="card-content">
-                    <h3>{{ post.data.title }}</h3>
-                    <p>{{ post.data.description }}</p>
-                    <a href="{{ post.url }}" class="button">Read More</a>
-                </div>
+  </section>
+  {# Latest stories section - currently disabled
+        {% if collections.posts_en %}
+          <section class="section alternate">
+            <div class="container">
+              <h2>{{ translations.en.home.latestStories }}</h2>
+              <div class="grid">
+                {% for post in collections.posts_en | reverse | limit(3) %}
+                  <div class="card">
+                    {% if post.data.image %}
+                      <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+                    {% endif %}
+                    <div class="card-content">
+                      <h3>{{ post.data.title }}</h3>
+                      <p>{{ post.data.description }}</p>
+                      <a href="{{ post.url }}" class="button">{{ translations.en.home.readMore }}</a>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
             </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
+          </section>
+        {% endif %}
+      #}

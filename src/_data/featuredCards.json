@@ -2,18 +2,18 @@
   "cards": [
     {
       "title": "Biodiversity",
-      "image": "assets/images/monkey_1.jpg",
+      "image": "/assets/images/monkey_1.jpg",
       "description": "Costa Rica, and the Puntarenas province in particular, attracts ecotourists, biologists, botanists -- this place is a naturalist's paradise."
     },
     {
       "title": "Activities & Adventures",
-      "image": "assets/images/ocean_sunset_ventanas.jpg",
+      "image": "/assets/images/ocean_sunset_ventanas.jpg",
       "description": "From surfing and hiking to waterfall rappelling, discover endless possibilities for adventure."
     },
     {
       "title": "Slow Living",
-      "image": "assets/images/chill_crane.jpg",
+      "image": "/assets/images/chill_crane.jpg",
       "description": "Embrace the Pura Vida lifestyle in our vibrant communities, where nature and modern comfort coexist."
     }
   ]
-} 
+}

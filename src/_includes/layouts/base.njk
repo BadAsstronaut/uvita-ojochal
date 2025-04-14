@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ metadata.language }}">
+{% set locale = locale | default('en') %}
+<html lang="{{ locale }}">
     <head>
         <meta charset="UTF-8">
         <meta
         name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        {# Video Support #}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="format-detection" content="telephone=no">
+        
         {# Basic Meta Tags #}
         <title>
             {% if title %}
@@ -55,5 +61,6 @@
         </main>
         {% include "components/footer-component.njk" %}
         <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/carousel.js"></script>
     </body>
 </html>

@@ -1,0 +1,22 @@
+{
+    "title": "Eyes on Ojochal",
+    "url": "https://uvita-ojochal.com/",
+    "language": "es",
+    "description": "Vida en Costa Rica: Una familia estadounidense se muda al paraíso. Playas, selvas, cascadas. Sigue nuestras aventuras.",
+    "author": {
+        "name": "Markie Mickey",
+        "email": "markie@uvita-ojochal.com"
+    },
+    "social": {
+        "bluesky": "uvita-ojochal.com"
+    },
+    "seo": {
+        "defaultTitle": "Uvita-Ojochal - Costa Rica",
+        "titleTemplate": "%s | Uvita-Ojochal",
+        "defaultDescription": "Descubre la belleza de la costa Pacífica sur de Costa Rica. Experimenta Uvita y Ojochal a través de nuestros ojos - playas prístinas, selvas exuberantes y cultura vibrante.",
+        "defaultImage": "/assets/images/ocean_sunset_ventanas.jpg",
+        "defaultKeywords": "Costa Rica, Uvita, Ojochal, costa Pacífica, playas, vida silvestre, paraíso tropical",
+        "locale": "es_ES",
+        "type": "website"
+    }
+}

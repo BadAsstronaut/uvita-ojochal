@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="format-detection" content="telephone=no">
+        
         
         <title>
             
@@ -43,19 +49,34 @@
         <header class="site-header" role="banner">
   <div class="header-container">
     <a href="/" class="logo" aria-label="Uvita-Ojochal">
-      <img src="/.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=300&format=webp&via=transform" alt="Uvita-Ojochal Logo" loading="lazy" decoding="async" width="666" height="660" srcset="/.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=300&format=webp&via=transform 300w, /.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=600&format=webp&via=transform 600w, /.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=666&format=webp&via=transform 666w" sizes="100vw">
-    </a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toggle menu">
-      <span class="hamburger"></span>
-    </button>
-    <nav class="primary-nav nav-links" role="navigation">
-      <ul>
-        <li><a href="/pages/about">About Us</a></li>
-        <li><a href="/pages/contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+      <img src="/.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=300&format=webp&via=transform" alt="Uvita-Ojochal Logo" loading="lazy" decoding="async" width="666" height="660" srcset="/.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=300&format=webp&via=transform 300w, /.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=600&format=webp&via=transform 600w, /.11ty/image/?src=src%2Fassets%2Fimages%2Fuvita-ojochal-logo-light.png&width=666&format=webp&via=transform 666w" sizes="100vw"></a>
+      <div class="language-selector">
+        <fieldset>
+          <legend>Language</legend>
+          <div class="language-options">
+            <label for="lang-en">
+              <input type="radio" id="lang-en" name="language" value="en" checked="">
+                <span>EN</span>
+              </label>
+              <label for="lang-es">
+                <input type="radio" id="lang-es" name="language" value="es">
+                  <span>ES</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+          </button>
+          <nav class="primary-nav nav-links" role="navigation">
+            <ul>
+              <li><a href="/pages/about">About Us</a></li>
+              <li><a href="/pages/contact">Contact</a></li>
+              <li><a href="/pages/recommendations">Recommendations</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
         <main id="main-content" class="contact-page" tabindex="-1">
             
@@ -68,15 +89,15 @@
             <input type="hidden" name="access_key" value="34ec1e52-4e0c-421d-b8dc-267af0f54907">
             <input type="hidden" name="redirect" value="https://uvita-ojochal.com/pages/contact/success">
             <div class="form-group">
-                <label for="name" class="required">Name</label>
+                <label for="name" class="required">Your Name</label>
                 <input type="text" id="name" name="name" required="" aria-required="true" placeholder="Your name" class="form-control" autocomplete="name">
             </div>
             <div class="form-group">
-                <label for="email" class="required">Email</label>
+                <label for="email" class="required">Email Address</label>
                 <input type="email" id="email" name="email" required="" aria-required="true" placeholder="your.email@example.com" class="form-control" autocomplete="email">
             </div>
             <div class="form-group">
-                <label for="message" class="required">Message</label>
+                <label for="message" class="required">Your Message</label>
                 <textarea id="message" name="message" required="" aria-required="true" placeholder="Your message here..." class="form-control" rows="6"></textarea>
             </div>
             <div class="visually-hidden">
@@ -116,5 +137,6 @@
 </footer>
 
         <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/carousel.js"></script>
     </body>
 </html>
