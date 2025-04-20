@@ -73,11 +73,18 @@
         <meta property="og:description" content="{{ description or metadata.seo.defaultDescription }}">
         <meta property="og:url" content="{{ metadata.url }}{% if page.url.startsWith('/') %}{{ page.url | replace('/es/', '/es/') | replace('//', '/') }}{% else %}/{{ page.url }}{% endif %}">
         <meta property="og:locale" content="{{ metadata.seo.locale }}">
-        <meta property="og:type" content="{{ metadata.seo.type }}">
-        <meta
-        property="og:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
+        <meta property="og:type" content="{{ ogType or metadata.seo.type }}">
+        {% if page.url and page.url.includes('landscaping') or page.url and page.url.includes('paisajismo') %}
+            <meta property="og:image" content="https://uvita-ojochal.com/assets/images/social/landscaping_og.jpg">
+            <meta name="twitter:image" content="https://uvita-ojochal.com/assets/images/social/landscaping_og.jpg">
+        {% else %}
+            <meta property="og:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}">
+            <meta name="twitter:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}">
+        {% endif %}
+        <meta property="og:image:width" content="500">
+        <meta property="og:image:height" content="500">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:alt" content="{% if title %}{{ title }}{% else %}{{ metadata.seo.defaultTitle }}{% endif %}">
         
         {# Twitter Card Meta Tags #}
         <meta name="twitter:card" content="summary_large_image">
@@ -85,8 +92,6 @@
         <meta name="twitter:creator" content="{{ metadata.social.twitter or '@uvitaojochal' }}">
         <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ metadata.seo.defaultTitle }}{% endif %}">
         <meta name="twitter:description" content="{{ description or metadata.seo.defaultDescription }}">
-        <meta
-        name="twitter:image" content="{{ metadata.url }}{{ featuredImage or metadata.seo.defaultImage }}">
         
         {# Favicon #}
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
