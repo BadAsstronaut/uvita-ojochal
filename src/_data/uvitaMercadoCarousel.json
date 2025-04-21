@@ -1,0 +1,29 @@
+{
+  "slides": [
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/la_finca_pz/la_finca.jpg",
+      "alt": "LA FINCA PZ Hot Sauces display"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/nilson/nilson.jpg",
+      "alt": "Nilson's Brazilian Jewelry collection"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/mariscos_jomar/mathias.jpg",
+      "alt": "Mariscos Jomar fresh seafood display"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/nilson/jewelry.jpg",
+      "alt": "Handcrafted jewelry at Uvita Mercado"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/la_finca_pz/sauces.jpg",
+      "alt": "Artisanal hot sauces at Uvita Mercado"
+    }
+  ]
+} 

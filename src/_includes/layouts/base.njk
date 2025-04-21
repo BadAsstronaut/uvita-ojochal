@@ -112,6 +112,12 @@
             };
         </script>
         
+        {# Mapbox #}
+        {% if page.url and page.url.includes('mercado') %}
+            <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+            <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+        {% endif %}
+        
         {# Enhanced Schema.org Markup #}
         <script type="application/ld+json">
             {

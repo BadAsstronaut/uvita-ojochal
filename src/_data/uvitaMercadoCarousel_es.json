@@ -1,0 +1,29 @@
+{
+  "slides": [
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/la_finca_pz/la_finca.jpg",
+      "alt": "Exhibición de salsas picantes LA FINCA PZ"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/nilson/nilson.jpg",
+      "alt": "Colección de joyería brasileña de Nilson"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/mariscos_jomar/mathias.jpg",
+      "alt": "Exhibición de mariscos frescos de Mariscos Jomar"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/nilson/jewelry.jpg",
+      "alt": "Joyería artesanal en el Mercado de Uvita"
+    },
+    {
+      "type": "image",
+      "src": "/assets/images/mercado/la_finca_pz/sauces.jpg",
+      "alt": "Salsas picantes artesanales en el Mercado de Uvita"
+    }
+  ]
+} 

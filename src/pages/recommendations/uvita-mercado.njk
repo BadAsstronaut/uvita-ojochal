@@ -1,0 +1,482 @@
+---
+layout: base
+title: Mercado Bahía Ballena | Local Market Vendors in Uvita, Costa Rica
+description: Discover local artisans and vendors at Mercado Bahía Ballena in Costa Rica's Southern Zone. From handcrafted hot sauces to Brazilian jewelry, explore authentic local products.
+keywords: uvita market, local vendors costa rica, artisanal products uvita, mercado bahia ballena, hot sauces costa rica, brazilian jewelry uvita, local artisans southern zone, shopping uvita, handmade products costa rica
+mainContentClass: main-content-recommendations
+locale: en
+permalink: /recommendations/uvita-mercado/
+featuredImage: assets/images/mercado/nilson/jewelry.jpg
+ogType: business.business
+---
+
+<div class="hero-carousel">
+  <div class="carousel-overlay">
+    <h1 class="carousel-title">Mercado Bahía Ballena, Uvita</h1>
+    <p class="carousel-subtitle">Discover Local Artisans & Vendors</p>
+  </div>
+  
+  <div class="hero-video-container">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="/assets/images/mercado/mercado.mp4" type="video/mp4">
+      Your browser does not support the video element.
+    </video>
+  </div>
+</div>
+
+<section class="recommendations-section section">
+  <div class="container">
+    <div class="recommendations-content" style="margin-top: 13rem; height: 100%; min-height: 60vh;">
+      <h1 class="page-title">Mercado Bahía Ballena, Uvita</h1>
+      <div class="recommendations-text">
+        <p>The Mercado Bahía Ballena represents the heart of local commerce and craftsmanship in Costa Rica's Southern Zone. This vibrant marketplace brings together artisans, farmers, and entrepreneurs who showcase the region's diverse talents and products.</p>
+        
+        <p>Each vendor at the Mercado Bahía Ballena offers unique products that reflect the rich cultural heritage and natural bounty of Costa Rica. From handcrafted hot sauces made with local peppers to exquisite Brazilian-inspired jewelry, the market presents authentic treasures you won't find anywhere else.</p>
+        
+        <div class="recommendations-list">
+          <h2>Featured Vendors</h2>
+          <div class="vendor-cards">
+            <div class="vendor-card">
+              <a href="/recommendations/uvita-mercado/la-finca-pz">
+                <div class="vendor-image">
+                  <img src="/assets/images/mercado/la_finca_pz/la_finca.jpg" alt="LA FINCA PZ Hot Sauces">
+                </div>
+                <div class="vendor-info">
+                  <strong>LA FINCA PZ Hot Sauces</strong>
+                  <p>Artisanal hot sauces crafted with local ingredients</p>
+                </div>
+              </a>
+            </div>
+            
+            <div class="vendor-card">
+              <a href="/recommendations/uvita-mercado/nilson-jewelry">
+                <div class="vendor-image">
+                  <img src="/assets/images/mercado/nilson/nilson.jpg" alt="Nilson's Brazilian Jewelry">
+                </div>
+                <div class="vendor-info">
+                  <strong>Nilson's Brazilian Jewelry</strong>
+                  <p>Handcrafted jewelry with Brazilian inspiration</p>
+                </div>
+              </a>
+            </div>
+            
+            <div class="vendor-card">
+              <a href="/recommendations/uvita-mercado/mariscos-jomar">
+                <div class="vendor-image">
+                  <img src="/assets/images/mercado/mariscos_jomar/mathias.jpg" alt="Mariscos Jomar">
+                </div>
+                <div class="vendor-info">
+                  <strong>Mariscos Jomar</strong>
+                  <p>Fresh locally-caught seafood from Costa Rica's Pacific Coast</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recommendation-item">
+          <h2>Visiting the Market</h2>
+          <p>The Mercado Bahía Ballena welcomes visitors throughout the week, offering a glimpse into the local community and culture. Whether you're searching for unique souvenirs, delicious local foods, or simply want to experience the authentic atmosphere of a Costa Rican market, Mercado Bahía Ballena provides a welcoming environment to explore and discover.</p>
+          
+          <p>Take your time to wander through the stalls, chat with the vendors, and learn about their crafts and products. The market is not just a place to shop—it's an experience that connects you to the people and traditions of Costa Rica's Southern Zone.</p>
+        </div>
+        
+        <div class="map-container">
+          <h2>Location</h2>
+          <div id="mercado-map" class="location-map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero-video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+}
+
+.carousel-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-subtitle {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-carousel {
+  position: relative;
+  margin-top: 0; /* Remove the top margin */
+}
+
+.vendor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.vendor-card {
+  flex: 1;
+  min-width: 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vendor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.vendor-card a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.vendor-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.vendor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.vendor-card:hover .vendor-image img {
+  transform: scale(1.05);
+}
+
+.vendor-info {
+  padding: 1.5rem;
+  background-color: white;
+}
+
+.vendor-info strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #336644;
+  margin-bottom: 0.5rem;
+}
+
+.vendor-info p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .vendor-cards {
+    flex-direction: column;
+  }
+  
+  .location-map {
+    height: 300px;
+  }
+}
+
+.map-container {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.location-map {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Simplified map styling */
+.custom-popup {
+  background: #ffffff;
+  color: #333;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  font-family: inherit;
+  text-align: center;
+}
+
+.custom-popup strong {
+  font-size: 1rem;
+  color: #333;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: #ffffff !important;
+}
+
+/* Remove the toggle button and other extra styling */
+.map-toggle,
+.popup-content p {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .vendor-cards {
+    flex-direction: column;
+  }
+  
+  .location-map {
+    height: 300px;
+  }
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the Mapbox map
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29yZXdvb2QiLCJhIjoiY203NTZ5cngyMGF2bzJrcThsNHQ3ZXVzaSJ9.-T8yQ5U78wTin8dJ7b64fw';
+
+    const map = new mapboxgl.Map({
+      container: 'mercado-map',
+      style: 'mapbox://styles/mapbox/streets-v12', // Simple streets style
+      center: [-83.73741075420277, 9.158783305070521],
+      zoom: 15
+    });
+    
+    // Add minimal navigation controls
+    map.addControl(new mapboxgl.NavigationControl({
+      showCompass: false,
+      showZoom: true
+    }), 'top-right');
+    
+    // Custom popup styling - simplified
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: true,
+      offset: 25,
+      className: 'custom-popup'
+    }).setHTML("<strong>Mercado Bahía Ballena</strong>");
+    
+    // Add marker with higher contrast color but simpler
+    new mapboxgl.Marker({
+      color: '#e63946', // Bright red for visibility
+      scale: 1.1 // Slightly larger marker
+    })
+      .setLngLat([-83.73741075420277, 9.158783305070521])
+      .setPopup(popup)
+      .addTo(map);
+      
+    // Simplified map - remove POIs and other businesses
+    map.on('load', function() {
+      // Hide points of interest, shops, etc.
+      map.setLayoutProperty('poi-label', 'visibility', 'none');
+      map.setLayoutProperty('poi', 'visibility', 'none');
+      
+      // Keep only roads and street names visible
+      const layers = map.getStyle().layers;
+      for (const layer of layers) {
+        if (layer.id.includes('poi') || layer.id.includes('landmark')) {
+          map.setLayoutProperty(layer.id, 'visibility', 'none');
+        }
+      }
+    });
+  });
+</script>
+
+<!-- SEO metadata -->
+<div class="seo-metadata" style="display:none;">
+  <span>uvita market</span>
+  <span>local vendors costa rica</span>
+  <span>artisanal products uvita</span>
+  <span>mercado uvita</span>
+  <span>hot sauces costa rica</span>
+  <span>brazilian jewelry uvita</span>
+  <span>local artisans southern zone</span>
+  <span>shopping uvita</span>
+  <span>handmade products costa rica</span>
+  <span>local market southern zone</span>
+  <span>artisan market uvita</span>
+  <span>costa rica crafts</span>
+  <span>uvita shopping</span>
+  <span>local artisans costa rica</span>
+  <span>handcrafted souvenirs costa rica</span>
+</div>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://uvita-ojochal.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Recommendations",
+      "item": "https://uvita-ojochal.com/recommendations/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Uvita Mercado",
+      "item": "https://uvita-ojochal.com/recommendations/uvita-mercado/"
+    }
+  ]
+}
+</script>
+
+<!-- Vendor SEO - LocalBusiness Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "LocalBusiness",
+        "name": "LA FINCA PZ Hot Sauces",
+        "description": "Artisanal hot sauces crafted with local ingredients from Costa Rica's Southern Zone",
+        "image": "https://uvita-ojochal.com/assets/images/mercado/la_finca_pz/la_finca.jpg",
+        "url": "https://uvita-ojochal.com/recommendations/uvita-mercado/la-finca-pz",
+        "telephone": "+506 8888 8888",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Uvita",
+          "addressRegion": "Puntarenas",
+          "addressCountry": "Costa Rica"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "9.1640",
+          "longitude": "-83.7349"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Artisanal Hot Sauces"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "LocalBusiness",
+        "name": "Nilson's Brazilian Jewelry",
+        "description": "Exquisite handcrafted jewelry with Brazilian inspiration, created by artisan Nilson",
+        "image": "https://uvita-ojochal.com/assets/images/mercado/nilson/nilson.jpg",
+        "url": "https://uvita-ojochal.com/recommendations/uvita-mercado/nilson-jewelry",
+        "telephone": "+506 8888 8889",
+        "priceRange": "$$-$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Uvita",
+          "addressRegion": "Puntarenas",
+          "addressCountry": "Costa Rica"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "9.1640",
+          "longitude": "-83.7349"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Handcrafted Jewelry"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "LocalBusiness",
+        "name": "Mariscos Jomar",
+        "description": "Fresh locally-caught seafood from Costa Rica's Pacific Coast, offered by a family-owned business",
+        "image": "https://uvita-ojochal.com/assets/images/mercado/mariscos_jomar/mathias.jpg",
+        "url": "https://uvita-ojochal.com/recommendations/uvita-mercado/mariscos-jomar",
+        "telephone": "+506 8888 8890",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Uvita",
+          "addressRegion": "Puntarenas",
+          "addressCountry": "Costa Rica"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "9.1640",
+          "longitude": "-83.7349"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Fresh Seafood"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Open Graph Vendor Data -->
+<meta property="og:title" content="Uvita Mercado | Local Market Vendors in Uvita, Costa Rica" />
+<meta property="og:description" content="Discover local artisans and vendors at Uvita Mercado in Costa Rica's Southern Zone. From handcrafted hot sauces to Brazilian jewelry, explore authentic local products." />
+<meta property="og:image" content="https://uvita-ojochal.com/assets/images/mercado/nilson/jewelry.jpg" />
+<meta property="og:url" content="https://uvita-ojochal.com/recommendations/uvita-mercado/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Uvita-Ojochal Travel Guide" />
+
+<!-- Twitter Card Data -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Uvita Mercado | Local Market Vendors in Uvita, Costa Rica" />
+<meta name="twitter:description" content="Discover local artisans and vendors at Uvita Mercado in Costa Rica's Southern Zone. From handcrafted hot sauces to Brazilian jewelry, explore authentic local products." />
+<meta name="twitter:image" content="https://uvita-ojochal.com/assets/images/mercado/nilson/jewelry.jpg" /> 
