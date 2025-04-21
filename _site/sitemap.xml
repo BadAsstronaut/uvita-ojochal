@@ -85,6 +85,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://uvita-ojochal.com/assets/js/path-map.js</loc>
+        <lastmod>2025-04-21T19:38:39.788Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://uvita-ojochal.com/</loc>
         <lastmod>2025-04-13T21:19:40.620Z</lastmod>
         <changefreq>monthly</changefreq>
@@ -151,20 +157,20 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/contacto/exito/</loc>
-        <lastmod>2025-04-13T21:31:33.181Z</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://uvita-ojochal.com/es/recomendaciones/paisajismo/</loc>
         <lastmod>2025-04-13T22:38:29.639Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://uvita-ojochal.com/es/recommendations/uvita-mercado/</loc>
+        <loc>https://uvita-ojochal.com/es/recomendaciones/uvita-mercado/</loc>
         <lastmod>2025-04-20T23:38:03.617Z</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://uvita-ojochal.com/es/contacto/exito/</loc>
+        <lastmod>2025-04-13T21:31:33.181Z</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

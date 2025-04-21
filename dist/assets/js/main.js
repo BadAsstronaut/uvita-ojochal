@@ -35,6 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Define path mappings for translating between languages
+    const pathMap = {
+        en_to_es: {
+            '/': '/es/',
+            '/recommendations/': '/es/recomendaciones/',
+            '/recommendations/uvita-mercado/': '/es/recomendaciones/uvita-mercado/',
+            '/recommendations/landscaping/': '/es/recomendaciones/paisajismo/',
+            '/about/': '/es/nosotros/',
+            '/contact/': '/es/contacto/',
+            '/contact/success/': '/es/contacto/exito/'
+        },
+        es_to_en: {
+            '/es/': '/',
+            '/es/recomendaciones/': '/recommendations/',
+            '/es/recomendaciones/uvita-mercado/': '/recommendations/uvita-mercado/',
+            '/es/recomendaciones/paisajismo/': '/recommendations/landscaping/',
+            '/es/nosotros/': '/about/',
+            '/es/contacto/': '/contact/',
+            '/es/contacto/exito/': '/contact/success/'
+        }
+    };
+
     // Language selector functionality - works for both mobile and desktop selectors
     const languageRadios = document.querySelectorAll('.language-selector input[type="radio"]');
 
@@ -53,34 +75,85 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Apply preferred language from localStorage on page load
+        // Auto-detect browser language on first visit (if no preference stored)
         const storedLang = localStorage.getItem('preferredLanguage');
-        if (storedLang) {
-            const currentLang = document.documentElement.lang;
+        const currentLang = document.documentElement.lang;
 
-            // Only redirect if the stored language is different from current
-            if (storedLang !== currentLang) {
+        if (!storedLang) {
+            // Get browser language (only consider 'en' or 'es')
+            const browserLang = navigator.language.split('-')[0];
+            const supportedLang = ['en', 'es'].includes(browserLang) ? browserLang : 'en';
+            
+            // Only redirect if the detected language is different from current
+            if (supportedLang !== currentLang) {
                 const currentPath = window.location.pathname;
-                const newUrl = getLocalizedUrl(currentPath, storedLang);
+                const newUrl = getLocalizedUrl(currentPath, supportedLang);
+                localStorage.setItem('preferredLanguage', supportedLang);
                 window.location.href = newUrl;
             }
+        } else if (storedLang !== currentLang) {
+            // Apply stored language if different from current
+            const currentPath = window.location.pathname;
+            const newUrl = getLocalizedUrl(currentPath, storedLang);
+            window.location.href = newUrl;
         }
     }
 
     // Helper function to get localized URL
     function getLocalizedUrl(path, locale) {
-        // Remove any existing locale prefix
-        let cleanPath = path.replace(/^\/(en|es)\//, '/');
-
-        // Handle root path special case
-        if (cleanPath === '/' || cleanPath === '') {
-            return locale === 'en' ? '/' : `/${locale}/`;
+        const currentLocale = document.documentElement.lang;
+        
+        // If already on the target locale, no change needed
+        if (currentLocale === locale) {
+            return path;
         }
-
-        // Add locale prefix for non-English
-        return locale === 'en' ? cleanPath : `/${locale}${cleanPath}`;
+        
+        // Clean up the path - remove trailing slash for lookup if present
+        let lookupPath = path;
+        const hasTrailingSlash = path.endsWith('/') && path !== '/';
+        if (!hasTrailingSlash) {
+            lookupPath = path + '/';
+        }
+        
+        // Choose the right mapping based on the direction of translation
+        const mapToUse = locale === 'en' ? pathMap.es_to_en : pathMap.en_to_es;
+        
+        // Check for exact match in our path mappings
+        if (mapToUse[lookupPath]) {
+            // Return the matched path, preserving trailing slash status
+            const result = mapToUse[lookupPath];
+            return hasTrailingSlash ? result : result.replace(/\/$/, '');
+        }
+        
+        // No exact match found, check for path without trailing slash
+        if (hasTrailingSlash && mapToUse[lookupPath.slice(0, -1)]) {
+            return mapToUse[lookupPath.slice(0, -1)];
+        }
+        
+        // If no direct mapping exists, handle by prefixing/removing /es/
+        if (locale === 'en') {
+            // To English: remove /es/ prefix and translate known paths
+            let newPath = path.replace(/^\/es\//, '/');
+            // Handle special conversions
+            newPath = newPath.replace('/recomendaciones/', '/recommendations/');
+            newPath = newPath.replace('/paisajismo/', '/landscaping/');
+            newPath = newPath.replace('/nosotros/', '/about/');
+            newPath = newPath.replace('/contacto/', '/contact/');
+            newPath = newPath.replace('/exito/', '/success/');
+            return newPath;
+        } else {
+            // To Spanish: add /es/ prefix if not present and translate known paths
+            let newPath = path.startsWith('/es/') ? path : `/es${path}`;
+            // Handle special conversions
+            newPath = newPath.replace('/recommendations/', '/recomendaciones/');
+            newPath = newPath.replace('/landscaping/', '/paisajismo/');
+            newPath = newPath.replace('/about/', '/nosotros/');
+            newPath = newPath.replace('/contact/', '/contacto/');
+            newPath = newPath.replace('/success/', '/exito/');
+            return newPath;
+        }
     }
-
+    
     // Intersection Observer for fade-in animations
     const observerOptions = {
         root: null,

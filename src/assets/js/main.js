@@ -35,6 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Define path mappings for translating between languages
+    const pathMap = {
+        en_to_es: {
+            '/': '/es/',
+            '/recommendations/': '/es/recomendaciones/',
+            '/recommendations/uvita-mercado/': '/es/recomendaciones/uvita-mercado/',
+            '/recommendations/landscaping/': '/es/recomendaciones/paisajismo/',
+            '/about/': '/es/nosotros/',
+            '/contact/': '/es/contacto/',
+            '/contact/success/': '/es/contacto/exito/'
+        },
+        es_to_en: {
+            '/es/': '/',
+            '/es/recomendaciones/': '/recommendations/',
+            '/es/recomendaciones/uvita-mercado/': '/recommendations/uvita-mercado/',
+            '/es/recomendaciones/paisajismo/': '/recommendations/landscaping/',
+            '/es/nosotros/': '/about/',
+            '/es/contacto/': '/contact/',
+            '/es/contacto/exito/': '/contact/success/'
+        }
+    };
+
     // Language selector functionality - works for both mobile and desktop selectors
     const languageRadios = document.querySelectorAll('.language-selector input[type="radio"]');
 
@@ -86,90 +108,52 @@ document.addEventListener('DOMContentLoaded', () => {
             return path;
         }
         
-        // Handle root path special case
-        if (path === '/' || path === '') {
-            return locale === 'en' ? '/' : `/${locale}/`;
+        // Clean up the path - remove trailing slash for lookup if present
+        let lookupPath = path;
+        const hasTrailingSlash = path.endsWith('/') && path !== '/';
+        if (!hasTrailingSlash) {
+            lookupPath = path + '/';
         }
         
-        // Step 1: Clean the path - remove locale prefix
-        let cleanPath = path;
-        if (currentLocale === 'es' && path.startsWith('/es')) {
-            cleanPath = path.replace(/^\/es/, '');
+        // Choose the right mapping based on the direction of translation
+        const mapToUse = locale === 'en' ? pathMap.es_to_en : pathMap.en_to_es;
+        
+        // Check for exact match in our path mappings
+        if (mapToUse[lookupPath]) {
+            // Return the matched path, preserving trailing slash status
+            const result = mapToUse[lookupPath];
+            return hasTrailingSlash ? result : result.replace(/\/$/, '');
         }
         
-        // Step 2: Check for direct matches in our path mappings first
-        const result = tryDirectMapping(cleanPath, currentLocale, locale);
-        if (result) {
-            return locale === 'en' ? result : `/${locale}${result}`;
+        // No exact match found, check for path without trailing slash
+        if (hasTrailingSlash && mapToUse[lookupPath.slice(0, -1)]) {
+            return mapToUse[lookupPath.slice(0, -1)];
         }
         
-        // Step 3: Use pattern replacement for more complex paths
-        let transformedPath = applyPatternReplacements(cleanPath, currentLocale, locale);
-        
-        // Add locale prefix for non-English
-        return locale === 'en' ? transformedPath : `/${locale}${transformedPath}`;
+        // If no direct mapping exists, handle by prefixing/removing /es/
+        if (locale === 'en') {
+            // To English: remove /es/ prefix and translate known paths
+            let newPath = path.replace(/^\/es\//, '/');
+            // Handle special conversions
+            newPath = newPath.replace('/recomendaciones/', '/recommendations/');
+            newPath = newPath.replace('/paisajismo/', '/landscaping/');
+            newPath = newPath.replace('/nosotros/', '/about/');
+            newPath = newPath.replace('/contacto/', '/contact/');
+            newPath = newPath.replace('/exito/', '/success/');
+            return newPath;
+        } else {
+            // To Spanish: add /es/ prefix if not present and translate known paths
+            let newPath = path.startsWith('/es/') ? path : `/es${path}`;
+            // Handle special conversions
+            newPath = newPath.replace('/recommendations/', '/recomendaciones/');
+            newPath = newPath.replace('/landscaping/', '/paisajismo/');
+            newPath = newPath.replace('/about/', '/nosotros/');
+            newPath = newPath.replace('/contact/', '/contacto/');
+            newPath = newPath.replace('/success/', '/exito/');
+            return newPath;
+        }
     }
     
-    // Try to find a direct match in our mappings
-    function tryDirectMapping(path, fromLocale, toLocale) {
-        const pathMappings = {
-            'en': {
-                '/recommendations': '/recomendaciones',
-                '/recommendations/': '/recomendaciones/',
-                '/recommendations/landscaping': '/recomendaciones/paisajismo',
-                '/recommendations/landscaping/': '/recomendaciones/paisajismo/',
-                '/about': '/nosotros',
-                '/about/': '/nosotros/',
-                '/contact': '/contacto',
-                '/contact/': '/contacto/',
-                '/contact/success': '/contacto/exito',
-                '/contact/success/': '/contacto/exito/'
-            },
-            'es': {
-                '/recomendaciones': '/recommendations',
-                '/recomendaciones/': '/recommendations/',
-                '/recomendaciones/paisajismo': '/recommendations/landscaping',
-                '/recomendaciones/paisajismo/': '/recommendations/landscaping/',
-                '/nosotros': '/about',
-                '/nosotros/': '/about/',
-                '/contacto': '/contact',
-                '/contacto/': '/contact/',
-                '/contacto/exito': '/contact/success',
-                '/contacto/exito/': '/contact/success/'
-            }
-        };
-        
-        return pathMappings[fromLocale][path];
-    }
-    
-    // Apply pattern-based replacements
-    function applyPatternReplacements(path, fromLocale, toLocale) {
-        let result = path;
-        
-        const patterns = {
-            'en': [
-                { from: /\/recommendations\b/g, to: '/recomendaciones' },
-                { from: /\/landscaping\b/g, to: '/paisajismo' },
-                { from: /\/about\b/g, to: '/nosotros' },
-                { from: /\/contact\b/g, to: '/contacto' },
-                { from: /\/success\b/g, to: '/exito' }
-            ],
-            'es': [
-                { from: /\/recomendaciones\b/g, to: '/recommendations' },
-                { from: /\/paisajismo\b/g, to: '/landscaping' },
-                { from: /\/nosotros\b/g, to: '/about' },
-                { from: /\/contacto\b/g, to: '/contact' },
-                { from: /\/exito\b/g, to: '/success' }
-            ]
-        };
-        
-        patterns[fromLocale].forEach(pattern => {
-            result = result.replace(pattern.from, pattern.to);
-        });
-        
-        return result;
-    }
-
     // Intersection Observer for fade-in animations
     const observerOptions = {
         root: null,
